@@ -1,22 +1,5 @@
 /* Datos y funciones que comparten la web del cliente y el panel de Coni. */
 
-/* ==== Canal de mensajes: sin base de datos, los pedidos y estados viajan por ntfy.sh y viven 12 horas ====
-   "sala" y "pub" en la URL permiten probar sin tocar los pedidos reales. */
-const PARAMS = new URLSearchParams(location.search);
-const SALA = PARAMS.get('sala') || '5N9coD-Bile3';
-const NTFY = 'https://ntfy.sh';
-const TOPICO_PEDIDOS = `coni-${SALA}-pedidos`;
-const TOPICO_LOCAL = `coni-${SALA}-local`;
-const topicoPedido = (canal) => `coni-${SALA}-p-${canal}`;
-const CLAVE_PUBLICA = (() => {
-  const prueba = PARAMS.get('pub');
-  if (prueba) {
-    const [x, y] = prueba.split('.');
-    return { kty: 'EC', crv: 'P-256', x, y };
-  }
-  return { kty: 'EC', crv: 'P-256', x: 'w2VDoqCbdFt4wb4nxIt0dk9Sow-fipZst9NWCd6Cj50', y: '4YEUnyiWAYvw7kmax4ypXFPQ7GtE_mzwNLdNlXJ9Two' };
-})();
-
 /* ==== Datos de la prueba ==== */
 const WHATSAPP = '5493402521435';
 const DIRECCION = 'Necochea 315, Álvarez';
@@ -131,45 +114,19 @@ const aHora = (m) => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m 
 const TURNOS = [];
 for (let m = aMin(HORARIO.abre); m <= aMin(HORARIO.ultimoTurno); m += HORARIO.cadaMin) TURNOS.push(aHora(m));
 
-/* La hora del turno, el mismo día en que se hizo el pedido. */
-function horaDelTurno(ts, turno) {
-  const d = new Date(ts);
-  d.setHours(0, aMin(turno), 0, 0);
-  return d.getTime();
-}
-
-/* ==== Mensajes ==== */
+/* ==== Link de seguimiento ==== */
 const aB64 = (bytes) => btoa(String.fromCharCode(...new Uint8Array(bytes))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const deB64 = (txt) => Uint8Array.from(atob(txt.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0));
-const textoAB64 = (t) => aB64(new TextEncoder().encode(t));
-const b64ATexto = (b) => new TextDecoder().decode(deB64(b));
 
-function publicar(topico, cuerpo) {
-  return fetch(`${NTFY}/${topico}`, { method: 'POST', body: typeof cuerpo === 'string' ? cuerpo : JSON.stringify(cuerpo) });
-}
-
-/* El nombre y la dirección viajan cifrados: solo el panel, con su clave, los puede leer. */
-async function cifrarPedido(datos) {
-  const publica = await crypto.subtle.importKey('jwk', CLAVE_PUBLICA, { name: 'ECDH', namedCurve: 'P-256' }, false, []);
-  const efimera = await crypto.subtle.generateKey({ name: 'ECDH', namedCurve: 'P-256' }, true, ['deriveKey']);
-  const clave = await crypto.subtle.deriveKey({ name: 'ECDH', public: publica }, efimera.privateKey, { name: 'AES-GCM', length: 256 }, false, ['encrypt']);
-  const iv = crypto.getRandomValues(new Uint8Array(12));
-  const contenido = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, clave, new TextEncoder().encode(JSON.stringify(datos)));
-  const { x, y } = await crypto.subtle.exportKey('jwk', efimera.publicKey);
-  return JSON.stringify({ x, y, iv: aB64(iv), d: aB64(contenido) });
-}
-
-/* El link de seguimiento lleva lo necesario para mostrar el pedido, sin nombre ni dirección. */
-const crearEnlace = (d) => textoAB64(JSON.stringify(d));
+/* Lleva lo necesario para mostrar el pedido, sin nombre ni dirección. */
+const crearEnlace = (d) => aB64(new TextEncoder().encode(JSON.stringify(d)));
 function leerEnlace(texto) {
   try {
-    const d = JSON.parse(b64ATexto(texto));
-    return /^[A-Z0-9]{3,5}$/.test(d.c) && /^[A-Za-z0-9_-]{8,40}$/.test(d.k) && TURNOS.includes(d.h) ? d : null;
+    const d = JSON.parse(new TextDecoder().decode(deB64(texto)));
+    return /^[A-Z0-9]{3,5}$/.test(d.c) && TURNOS.includes(d.h) ? d : null;
   } catch {
     return null;
   }
 }
 
-const aleatorio = (largo, letras) => Array.from(crypto.getRandomValues(new Uint8Array(largo)), (b) => letras[b % letras.length]).join('');
-const nuevoCodigo = () => aleatorio(3, 'ABCDEFGHJKMNPQRSTUVWXYZ23456789');
-const nuevoCanal = () => aleatorio(20, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789');
+const nuevoCodigo = () => Array.from(crypto.getRandomValues(new Uint8Array(3)), (b) => 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'[b % 31]).join('');

@@ -16,7 +16,8 @@ body{background:var(--cuadros) 0 0/48px 48px}
 .app{position:relative;max-width:480px;min-height:100dvh;margin:0 auto;background:var(--crema);padding-bottom:104px;overflow-x:clip}
 
 /* Barra de prueba */
-.maqueta{padding:7px 16px;background:var(--kraft-claro);font-size:13px;font-weight:600;text-align:center}
+.maqueta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 16px;background:var(--kraft-claro);font-size:13px;font-weight:600}
+.maqueta button{min-height:36px;padding:0 12px;border:2px solid var(--negro);border-radius:999px;background:var(--papel);font-weight:700;white-space:nowrap}
 
 /* Cabecera */
 .top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px;padding:0 16px;background:var(--crema);border-bottom:2px solid var(--negro)}
@@ -155,7 +156,6 @@ summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-dec
 .seguimiento h1{font-size:31px;color:var(--rojo)}
 .sg-texto{margin:8px 0 16px;font-size:17px}
 .sg-hora{margin:0 0 14px;font-weight:800;color:var(--azul)}
-.sg-demora{margin:0 0 14px;padding:10px 12px;background:var(--amarillo);border-radius:12px;font-weight:700}
 .sg-numero{margin:0 0 14px;padding:12px;background:#fff;border:2px dashed var(--negro);border-radius:14px;font-weight:700}
 .sg-numero b{display:block;font:400 44px/1.1 var(--display);color:var(--rojo)}
 .seguimiento .btn{margin-bottom:10px}
@@ -167,7 +167,6 @@ summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-dec
 .sg-detalle ul{margin:0 0 8px;padding:0;list-style:none}
 .sg-detalle div{display:flex;justify-content:space-between;font-weight:800}
 .sg-mas{margin:16px 0 0;font-size:14px;color:var(--suave)}
-.sg-conexion{margin:10px 0 0;font-size:13.5px;font-weight:700;color:var(--suave)}
 .sg-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin-top:10px}
 
 /* Animaciones del seguimiento */
@@ -178,13 +177,6 @@ summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-dec
 .e-papel i{display:block;height:5px;margin-bottom:7px;border-radius:2px;background:var(--negro)}
 .e-papel i:nth-child(2){width:70%;background:var(--rojo)}
 .e-svg{width:min(100%,270px);height:auto}
-.e-camino{position:absolute;inset:0;overflow:hidden}
-.e-ruta{position:absolute;left:0;right:0;bottom:0;height:54px;background:var(--negro)}
-.e-ruta::after{content:"";position:absolute;left:-60px;right:-60px;top:24px;height:6px;background:repeating-linear-gradient(90deg,var(--crema) 0 30px,transparent 30px 60px)}
-.e-moto{position:absolute;left:50%;bottom:38px;margin-left:-34px;font-size:62px;line-height:1}
-.e-paisaje{position:absolute;bottom:52px;left:0;font-size:32px;line-height:1}
-.e-corazon{font-size:84px;line-height:1}
-.e-triste{font-size:70px;line-height:1}
 @media (prefers-reduced-motion:no-preference){
   .e-papel{animation:imprimir 2.6s ease-in-out infinite}
   .e-medallon{transform-box:fill-box;transform-origin:center bottom;animation:smash 1.9s ease-in-out infinite}
@@ -192,32 +184,86 @@ summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-dec
   .e-humo path{animation:humo 1.9s ease-out infinite}
   .e-humo path:nth-child(2){animation-delay:.3s}
   .e-humo path:nth-child(3){animation-delay:.6s}
-  .e-ruta::after{animation:ruta .7s linear infinite}
-  .e-moto{animation:moto .4s ease-in-out infinite alternate}
-  .e-paisaje{animation:paisaje 4.5s linear infinite}
-  .e-paisaje:nth-of-type(2){animation-delay:-1.6s}
-  .e-paisaje:nth-of-type(3){animation-delay:-3.1s}
-  .e-bolsa{transform-box:fill-box;transform-origin:center bottom;animation:bolsa 1.1s ease-in-out infinite}
-  .e-brillo{animation:brillo 1.1s ease-in-out infinite alternate}
-  .e-corazon{animation:latido 1.2s ease-in-out infinite}
-  .sg-escena.cambio{animation:cambio .5s ease-out}
 }
 @keyframes imprimir{0%{transform:translateY(-72%)}72%,100%{transform:translateY(0)}}
 @keyframes smash{0%,38%{transform:scale(1,1)}52%,78%{transform:scale(1.24,.5)}100%{transform:scale(1,1)}}
 @keyframes prensa{0%,38%{transform:translateY(-22px)}52%,78%{transform:translateY(8px)}100%{transform:translateY(-22px)}}
 @keyframes humo{0%{opacity:0;transform:translateY(8px)}40%{opacity:.75}100%{opacity:0;transform:translateY(-16px)}}
-@keyframes ruta{to{transform:translateX(60px)}}
-@keyframes moto{to{transform:translateY(-4px) rotate(-1.5deg)}}
-@keyframes paisaje{from{transform:translateX(-60px)}to{transform:translateX(520px)}}
-@keyframes bolsa{0%,100%{transform:translateY(0) scale(1,1)}45%{transform:translateY(-14px) scale(.98,1.03)}}
-@keyframes brillo{from{opacity:.25}to{opacity:1}}
-@keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
-@keyframes cambio{from{transform:scale(.96);opacity:.5}}
+/* Comprobante */
+.comprobante{margin:0 0 14px;padding:14px;text-align:left;background:#FBE7E3;border:2px solid var(--rojo);border-radius:14px}
+.comprobante h2{font-size:22px;color:var(--rojo)}
+.comprobante p{margin:6px 0 10px}
+.comprobante .alias{margin:0 0 10px;background:#fff}
+.comprobante .btn{margin-bottom:8px}
+.comprobante.hecho{background:#E3F2E8;border-color:var(--verde)}
+.comprobante.hecho h2{color:var(--verde)}
+.comprobante.hecho p{margin-bottom:0}
+
+/* Panel de Nico */
+.panel-nota{margin:6px 0 0;font-size:14px;color:var(--suave)}
+.tabs{position:sticky;top:0;z-index:2;margin-top:12px;background:#E8E1D1}
+.fila-check{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;border-bottom:2px solid var(--linea);font-weight:700}
+.fila-check input{flex:none;width:26px;height:26px;accent-color:var(--rojo)}
+.resumen-noche{margin:14px 0 0;font-weight:700}
+.turno-titulo{display:flex;align-items:center;gap:10px;margin-top:20px;padding-bottom:4px;border-bottom:2px solid var(--negro)}
+.turno-titulo h3{font-size:24px;color:var(--rojo)}
+.turno-titulo span{flex:1;font-size:13.5px;font-weight:600;color:var(--suave)}
+.turno-titulo .link{font-size:13.5px;white-space:nowrap}
+.comanda{margin-top:10px;padding:10px 12px;background:#fff;border:2px solid var(--linea);border-radius:12px}
+.comanda.lista{opacity:.55}
+.comanda header{display:flex;justify-content:space-between;gap:10px;font-weight:800}
+.comanda em{display:inline-block;margin:4px 0 0;padding:1px 8px;border-radius:999px;background:var(--amarillo);font-size:12.5px;font-style:normal;font-weight:800}
+.comanda-modo{margin:4px 0 6px;font-size:13.5px;color:var(--suave)}
+.comanda ul{margin:0;padding:0;list-style:none;font-size:14.5px}
+.comanda li span{display:block;padding-left:12px;font-size:14px;font-weight:700}
+.comanda .sin{color:var(--rojo)}
+.comanda .con{color:var(--verde)}
+.comanda-acc{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.btn-chico{min-height:44px;padding:0 12px;border:2px solid var(--negro);border-radius:10px;background:var(--papel);font-weight:800}
+.btn-chico[aria-pressed=true]{background:var(--verde);color:#fff}
+.cupo{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding:12px;background:var(--crema);border-radius:14px}
+.cupo small{display:block;font-size:13.5px;font-weight:500;color:var(--suave)}
+.fila-turno{display:grid;grid-template-columns:50px minmax(0,1fr) 36px 72px;align-items:center;gap:8px;min-height:54px;border-bottom:2px solid var(--linea);font-weight:800}
+.fila-turno.cerrado{color:#6B655C}
+.ocup{display:block;height:10px;border-radius:99px;background:#0A0A0C14;overflow:hidden}
+.ocup i{display:block;height:100%;background:var(--naranja)}
+.ocup i.lleno{background:var(--bordo)}
+
+/* Comanda impresa */
+#ticket{display:none;color:#000;background:#fff}
+.tk{width:72mm;padding:1mm 0;color:#000;font:13px/1.32 'Figtree',Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tk-logo{width:36mm;margin:0 auto}
+.tk-marca{margin:1mm 0 2mm;text-align:center;font-size:11px;font-weight:800;letter-spacing:.26em}
+.tk-fila{display:flex;align-items:baseline;justify-content:space-between;gap:2mm}
+.tk-hora{font-size:13px;font-weight:700}
+.tk-hora b{display:block;font-size:30px;line-height:1;font-weight:800}
+.tk-cod{font-size:24px;font-weight:800}
+.tk-banda{margin:2mm 0;padding:1mm 0;text-align:center;background:#000;color:#fff;font-size:17px;font-weight:800;letter-spacing:.08em}
+.tk-item{margin-bottom:2mm}
+.tk-item>b{display:block;font-size:16px;line-height:1.2;font-weight:800;text-transform:uppercase}
+.tk-sin{display:inline-block;margin:.6mm 0 .6mm 2mm;padding:0 1.5mm;background:#000;color:#fff;font-size:14px;font-weight:800;text-transform:uppercase}
+.tk-con,.tk-nota{margin-left:2mm;font-size:14px;font-weight:700}
+.tk-chico{font-size:11.5px;font-weight:600}
+.tk-corte{margin:3mm 0;border:0;border-top:2px dashed #000}
+.tk-linea{margin:2mm 0;border:0;border-top:1px solid #000}
+.tk-cobro{margin-top:2mm;padding:1.2mm;border:2px solid #000;font-size:16px;font-weight:800}
+.tk-cobro small{display:block;font-size:12px;font-weight:600}
+.tk-dir{font-size:17px;line-height:1.2;font-weight:800}
+@media print{
+  @page{margin:0}
+  html,body{background:#fff!important}
+  body>*:not(#ticket){display:none!important}
+  #ticket{display:block}
+  .tk{break-after:page}
+}
 </style>
 </head>
 <body>
 <div class="app" id="inicio">
-  <div class="maqueta">Prueba: extras y envíos de ejemplo, horario a confirmar</div>
+  <div class="maqueta">
+    <span>Prueba: extras y envíos de ejemplo, horario a confirmar</span>
+    <button type="button" id="abrir-panel">Panel de Nico</button>
+  </div>
 
   <header class="top">
     <a class="marca" href="#inicio">
@@ -377,6 +423,7 @@ summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-dec
           <span>Alias: <b id="alias"></b><small id="alias-titular"></small></span>
           <button type="button" id="copiar-alias">Copiar</button>
         </div>
+        <p class="aviso-chico" id="nota-comprobante" hidden>Después de pedir, nos tenés que mandar el comprobante por WhatsApp.</p>
         <div class="campo" id="bloque-vuelto" hidden>
           <label for="paga-con">¿Con cuánto pagás? <small>(opcional, para el vuelto)</small></label>
           <input type="tel" inputmode="numeric" id="paga-con" maxlength="9" placeholder="Ej: 20000">
@@ -398,9 +445,55 @@ summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-dec
   </div>
   <div class="pie-hoja apilado">
     <button class="btn btn-naranja" type="button" id="confirmar">Confirmar pedido</button>
-    <p class="nota" id="confirmar-nota">Después lo mandás por WhatsApp con un toque y seguís el estado acá.</p>
+    <p class="nota" id="confirmar-nota">Después lo mandás por WhatsApp con un toque.</p>
   </div>
 </dialog>
+
+<!-- Panel de Nico (demostración) -->
+<dialog id="hoja-panel" aria-labelledby="panel-titulo">
+  <header class="hoja-top">
+    <h2 class="hoja-titulo" id="panel-titulo">Panel de Nico</h2>
+    <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">✕</button>
+  </header>
+  <div class="cuerpo">
+    <div class="pad">
+      <p class="panel-nota" style="margin-top:0">Demostración con comandas de ejemplo. Los pedidos que confirmes desde este celular también aparecen acá.</p>
+      <div class="seg tabs" id="panel-tabs" role="group" aria-label="Secciones del panel">
+        <button type="button" data-tab="comandas" aria-pressed="true">Comandas</button>
+        <button type="button" data-tab="turnos" aria-pressed="false">Turnos</button>
+        <button type="button" data-tab="local" aria-pressed="false">Local</button>
+      </div>
+
+      <section id="tab-comandas"></section>
+
+      <section id="tab-turnos" hidden>
+        <div class="cupo">
+          <div><b>Hamburguesas por turno</b><small id="cupo-nota"></small></div>
+          <div class="cant" role="group" aria-label="Cupo por turno">
+            <button type="button" id="cupo-menos" aria-label="Una menos">−</button>
+            <output id="cupo-valor"></output>
+            <button type="button" id="cupo-mas" aria-label="Una más">+</button>
+          </div>
+        </div>
+        <div id="panel-turnos"></div>
+      </section>
+
+      <section id="tab-local" hidden>
+        <div class="grupo">
+          <h3>¿Cómo está el local?</h3>
+          <div class="seg" id="panel-estados" role="group" aria-label="Estado del local" style="grid-auto-flow:row;grid-template-columns:1fr 1fr"></div>
+        </div>
+        <div class="grupo">
+          <h3>Hoy no hay</h3>
+          <p class="ayuda">Marcá lo que se terminó y deja de poder pedirse.</p>
+          <div id="panel-productos"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</dialog>
+
+<div id="ticket" aria-hidden="true"></div>
 
 <script src="js/comun.js"></script>
 <script>
@@ -408,10 +501,12 @@ summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-dec
 let carrito = [];
 let borrador = null;
 let lineaEditando = null;
-const pedido = { modo: null, zona: null, direccion: '', turno: null, nombre: '', pago: null, pagaCon: '', cod: null, canal: null };
+const pedido = { modo: null, zona: null, direccion: '', turno: null, nombre: '', pago: null, pagaCon: '', cod: null };
 
-/* Lo que publica el panel. Sin datos recientes, el local se muestra abierto y con todos los turnos libres. */
-const local = { estado: 'abierto', cupo: CUPO_INICIAL, cerrados: [], agotados: [], ocupados: {} };
+/* Lo que cambia el Panel de Nico en este celular. Es una demostración: no se comparte entre clientes. */
+const local = { estado: 'abierto', cupo: CUPO_INICIAL, cerrados: [], agotados: [] };
+let comandas = [];
+let tabPanel = 'comandas';
 const puedePedir = () => (ESTADOS_LOCAL[local.estado] || ESTADOS_LOCAL.abierto).pedir;
 
 const subtotal = () => carrito.reduce((s, l) => s + precioLinea(l), 0);
@@ -523,7 +618,7 @@ function agregarBorrador() {
 /* ==== Link de seguimiento y mensaje ==== */
 function datosEnlace() {
   return {
-    c: pedido.cod, k: pedido.canal, h: pedido.turno, m: pedido.modo === 'delivery' ? 'd' : 'r',
+    c: pedido.cod, h: pedido.turno, m: pedido.modo === 'delivery' ? 'd' : 'r', p: pedido.pago === 'Transferencia' ? 't' : 'e',
     r: carrito.map((l) => `${l.cant}x ${nombreLinea(l)}`), tot: subtotal() + costoEnvio(), ts: pedido.ts || Date.now(),
   };
 }
@@ -551,7 +646,7 @@ function armarMensaje() {
   } else if (pedido.modo === 'retiro') {
     r.push('*RETIRA EN EL LOCAL*');
   }
-  if (pedido.pago === 'Transferencia') r.push('Pago: transferencia');
+  if (pedido.pago === 'Transferencia') r.push('Pago: transferencia (mando el comprobante)');
   if (pedido.pago === 'Efectivo') r.push('Pago: efectivo' + (pedido.pagaCon ? `, con ${plata(pedido.pagaCon)}` : ''));
   if (pedido.nombre) r.push(`Nombre: ${limpio(pedido.nombre)}`);
   return r.join('\n').trim();
@@ -583,7 +678,8 @@ function pintarLineas() {
 }
 
 /* ==== Turnos ==== */
-const libres = (t) => Math.max(local.cupo - (Number(local.ocupados[t]) || 0), 0);
+const ocupados = (t) => comandas.filter((c) => c.turno === t).reduce((s, c) => s + contarBurgers(c.lineas), 0);
+const libres = (t) => Math.max(local.cupo - ocupados(t), 0);
 
 /* Durante el servicio se esconden los turnos que ya pasaron. Fuera de horario se ven todos, para poder probar. */
 function turnosVigentes() {
@@ -620,11 +716,12 @@ function pintarOpcionesPedido() {
   $('bloque-delivery').hidden = pedido.modo !== 'delivery';
   $('bloque-retiro').hidden = pedido.modo !== 'retiro';
   $('bloque-alias').hidden = pedido.pago !== 'Transferencia';
+  $('nota-comprobante').hidden = pedido.pago !== 'Transferencia';
   $('bloque-vuelto').hidden = pedido.pago !== 'Efectivo' || pedido.modo !== 'delivery';
 }
 
 function actualizarPedido() {
-  if (!pedido.cod) { pedido.cod = nuevoCodigo(); pedido.canal = nuevoCanal(); }
+  if (!pedido.cod) pedido.cod = nuevoCodigo();
   pintarTurnos();
   pintarOpcionesPedido();
   const total = subtotal() + costoEnvio();
@@ -639,7 +736,7 @@ function actualizarPedido() {
   boton.disabled = !puedePedir();
   boton.textContent = `Confirmar pedido · ${plata(total)}`;
   $('confirmar-nota').textContent = puedePedir()
-    ? 'Después lo mandás por WhatsApp con un toque y seguís el estado acá.'
+    ? 'Después lo mandás por WhatsApp con un toque.'
     : ESTADOS_LOCAL[local.estado].aviso;
 }
 
@@ -667,37 +764,15 @@ function marcarErrores() {
 }
 const limpiarError = (id) => $(id)?.classList.remove('error');
 
-async function enviarAlPanel(datos) {
-  try {
-    const cifrado = await cifrarPedido(datos);
-    if (cifrado.length > 3900) return false;
-    const r = await Promise.race([
-      publicar(TOPICO_PEDIDOS, cifrado),
-      new Promise((_, no) => setTimeout(() => no(new Error('tiempo')), 7000)),
-    ]);
-    return r.ok;
-  } catch {
-    return false;
-  }
-}
-
-async function confirmarPedido() {
+function confirmarPedido() {
   if (!puedePedir() || !marcarErrores()) return;
-  const boton = $('confirmar');
-  boton.disabled = true;
-  boton.textContent = 'Guardando tu pedido…';
   pedido.ts = Date.now();
   const hash = crearEnlace(datosEnlace());
   const mensaje = `${armarMensaje()}\n\nSeguí tu pedido: ${urlSeguimiento(hash)}`;
-  const llego = await enviarAlPanel({
-    cod: pedido.cod, canal: pedido.canal, turno: pedido.turno, nombre: limpio(pedido.nombre), modo: pedido.modo,
-    zona: pedido.zona, direccion: limpio(pedido.direccion), pago: pedido.pago, pagaCon: pedido.pagaCon,
-    total: subtotal() + costoEnvio(), ts: pedido.ts,
-    lineas: carrito.map((l) => ({ id: l.id, opcion: l.opcion, sin: l.sin, extras: l.extras, nota: limpio(l.nota), cant: l.cant })),
-  });
-  guardarLocal('coni_pedido', { cod: pedido.cod, hash, mensaje, ts: pedido.ts, llego, mandado: false });
+  registrarComanda();
+  guardarLocal('coni_pedido', { cod: pedido.cod, hash, mensaje, ts: pedido.ts, mandadoEn: null });
   carrito = [];
-  Object.assign(pedido, { modo: null, zona: null, direccion: '', turno: null, nombre: '', pago: null, pagaCon: '', cod: null, canal: null, ts: null });
+  Object.assign(pedido, { modo: null, zona: null, direccion: '', turno: null, nombre: '', pago: null, pagaCon: '', cod: null, ts: null });
   ['direccion', 'nombre', 'paga-con'].forEach((id) => { $(id).value = ''; });
   $('hoja-pedido').close();
   actualizarTodo();
@@ -722,38 +797,142 @@ function pintarEstado() {
   $('aviso').textContent = e.aviso;
 }
 
-/* Lee lo último que publicó el panel: estado del local, cupo y turnos. */
-async function leerLocalPanel() {
-  try {
-    const r = await fetch(`${NTFY}/${TOPICO_LOCAL}/json?poll=1&since=latest`);
-    const lineas = (await r.text()).trim().split('\n').filter(Boolean);
-    if (!lineas.length) return;
-    const d = JSON.parse(JSON.parse(lineas[lineas.length - 1]).message);
-    if (ESTADOS_LOCAL[d.estado]) local.estado = d.estado;
-    if (Number.isInteger(d.cupo) && d.cupo > 0 && d.cupo <= 30) local.cupo = d.cupo;
-    if (Array.isArray(d.cerrados)) local.cerrados = d.cerrados.filter((t) => TURNOS.includes(t));
-    if (Array.isArray(d.agotados)) local.agotados = d.agotados.filter((id) => producto(id));
-    if (d.ocupados && typeof d.ocupados === 'object') local.ocupados = d.ocupados;
-    pintarCarta();
-    pintarEstado();
-    actualizarPedido();
-    if ($('hoja-prod').open) actualizarProducto();
-    pintarLineas();
-  } catch { /* sin datos del panel la web sigue funcionando */ }
+function refrescarLocal() {
+  pintarCarta();
+  pintarEstado();
+  actualizarPedido();
+  pintarLineas();
+  if ($('hoja-prod').open) actualizarProducto();
 }
 
-/* ==== Seguimiento ==== */
-const TEXTOS = {
-  nuevo: { titulo: 'Esperando a Coni', texto: 'Apenas lo vean, te lo confirman acá.', escena: 'ticket' },
-  confirmado: { titulo: '¡Lo tenemos!', texto: 'Tu pedido ya está en la lista.', escena: 'ticket' },
-  plancha: { titulo: 'Smasheando tu pedido', texto: 'Ya está en la plancha.', escena: 'plancha' },
-  listo: { titulo: '¡Ya está! Vení a buscarla', texto: `Te esperamos en ${DIRECCION}.`, escena: 'bolsa' },
-  camino: { titulo: 'Tu pedido salió en camino', texto: 'Ya va para tu casa. ¡Preparate!', escena: 'camino' },
-  terminado: { titulo: 'Que la disfrutes', texto: 'Gracias por elegirnos. Coni Smash no sería lo mismo sin ustedes.', escena: 'corazon' },
-  rechazado: { titulo: 'No pudimos tomar tu pedido', texto: 'Escribinos por WhatsApp y lo vemos.', escena: 'triste' },
-  vencido: { titulo: 'Todavía no lo confirmamos', texto: 'Si ya mandaste el WhatsApp, quedate tranquilo: escribinos y lo vemos.', escena: 'triste' },
-};
+/* ==== Panel de Nico: demostración con comandas de ejemplo ==== */
+function comandasDeEjemplo() {
+  const carga = { '20:30': 3, '20:45': 6, '21:00': 8, '21:15': 8, '21:30': 6, '21:45': 3, '22:00': 2 };
+  const nombres = ['Sofi', 'Juan', 'Cami', 'Tomi', 'Lu', 'Agus', 'Flor', 'Mati', 'Caro', 'Nacho'];
+  const calles = ['Belgrano 123', 'San Martín 450', 'Rivadavia 78', 'Mitre 912', 'Sarmiento 240'];
+  const burgers = PRODUCTOS.filter((p) => p.cat === 'burgers');
+  const salida = [];
+  let i = 0;
+  Object.entries(carga).forEach(([turno, total]) => {
+    let resto = total;
+    while (resto > 0) {
+      const p = burgers[i % burgers.length];
+      const cant = Math.min(resto, (i % 3) + 1);
+      const linea = { id: p.id, opcion: i % 3, sin: i % 2 ? [p.sacar[i % p.sacar.length]] : [], extras: i % 4 === 0 ? ['Cheddar extra'] : [], nota: '', cant };
+      const modo = i % 3 === 0 ? 'retiro' : 'delivery';
+      const zona = i % 3 === 1 ? 'Piñero' : 'Álvarez';
+      salida.push({
+        n: salida.length + 1, turno, nombre: nombres[i % nombres.length], modo, zona, direccion: calles[i % calles.length],
+        pago: i % 2 ? 'Efectivo' : 'Transferencia', pagaCon: i % 2 ? '60000' : '', lineas: [linea], lista: false,
+        total: precioLinea(linea) + (modo === 'delivery' ? ZONAS.find((z) => z.nombre === zona).envio : 0),
+      });
+      resto -= cant;
+      i++;
+    }
+  });
+  return salida;
+}
+function registrarComanda() {
+  comandas.push({
+    n: comandas.length + 1, cod: pedido.cod, turno: pedido.turno, nombre: limpio(pedido.nombre), modo: pedido.modo, zona: pedido.zona,
+    direccion: limpio(pedido.direccion), pago: pedido.pago, pagaCon: pedido.pagaCon, lineas: carrito.map((l) => ({ ...l })),
+    total: subtotal() + costoEnvio(), lista: false, propia: true,
+  });
+}
+const numeroComanda = (c) => (c.cod ? c.cod : String(c.n).padStart(3, '0'));
+const textoEntrega = (c) => (c.modo === 'delivery' ? `Delivery a ${c.zona}, ${c.direccion}` : 'Retira en el local');
+const textoPago = (c) => (c.pago === 'Efectivo' ? 'Efectivo' + (c.pagaCon ? `, con ${plata(c.pagaCon)}` : '') : 'Transferencia');
 
+function comandaHtml(c) {
+  const lineas = c.lineas.map((l) => `<li><b>${l.cant}x ${esc(nombreLinea(l))}</b>
+    ${l.sin.length ? `<span class="sin">Sin ${esc(l.sin.join(', ').toLowerCase())}</span>` : ''}
+    ${l.extras.map((e) => `<span class="con">+ ${esc(e)}</span>`).join('')}
+    ${l.nota ? `<span>${esc(l.nota)}</span>` : ''}</li>`).join('');
+  return `<article class="comanda ${c.lista ? 'lista' : ''}">
+    <header><span>#${esc(numeroComanda(c))} · ${esc(c.nombre)}</span><span>${plata(c.total)}</span></header>
+    ${c.propia ? '<em>Pedido recién hecho</em>' : ''}
+    <p class="comanda-modo">${esc(textoEntrega(c))} · ${esc(textoPago(c))}</p>
+    <ul>${lineas}</ul>
+    <div class="comanda-acc">
+      <button class="link" type="button" data-imprimir="${c.n}">Imprimir</button>
+      <button class="btn-chico" type="button" data-lista="${c.n}" aria-pressed="${c.lista}">${c.lista ? '✓ Lista' : 'Marcar lista'}</button>
+    </div>
+  </article>`;
+}
+function pintarComandas() {
+  const total = comandas.reduce((s, c) => s + contarBurgers(c.lineas), 0);
+  const grupos = TURNOS.filter((t) => comandas.some((c) => c.turno === t)).map((t) => `
+    <div class="turno-titulo">
+      <h3>${t}</h3>
+      <span>${ocupados(t)} de ${local.cupo} hamburguesas</span>
+      <button class="link" type="button" data-imprimir-turno="${t}">Imprimir turno</button>
+    </div>
+    ${comandas.filter((c) => c.turno === t).map(comandaHtml).join('')}`).join('');
+  $('tab-comandas').innerHTML = `<p class="resumen-noche">${comandas.length} comandas · ${total} hamburguesas esta noche</p>${grupos}`;
+}
+function pintarPanelTurnos() {
+  $('cupo-valor').textContent = local.cupo;
+  $('cupo-nota').textContent = `Un turno cada ${HORARIO.cadaMin} minutos: hasta ${local.cupo * TURNOS.length} por noche.`;
+  $('panel-turnos').innerHTML = TURNOS.map((t) => {
+    const cerrado = local.cerrados.includes(t);
+    const n = ocupados(t);
+    const ancho = Math.min(100, Math.round((n / local.cupo) * 100));
+    return `<div class="fila-turno ${cerrado ? 'cerrado' : ''}">
+      <span>${t}</span>
+      <span class="ocup"><i class="${n >= local.cupo ? 'lleno' : ''}" style="width:${ancho}%"></i></span>
+      <span>${n}/${local.cupo}</span>
+      <button class="btn-chico" type="button" data-alternar-turno="${t}" aria-pressed="${cerrado}" aria-label="${cerrado ? 'Abrir' : 'Cerrar'} el turno de las ${t}">${cerrado ? 'Abrir' : 'Cerrar'}</button>
+    </div>`;
+  }).join('');
+}
+function pintarPanel() {
+  document.querySelectorAll('[data-tab]').forEach((b) => {
+    b.setAttribute('aria-pressed', b.dataset.tab === tabPanel);
+    $(`tab-${b.dataset.tab}`).hidden = b.dataset.tab !== tabPanel;
+  });
+  pintarComandas();
+  pintarPanelTurnos();
+  $('panel-estados').innerHTML = Object.entries(ESTADOS_LOCAL).map(([k, e]) =>
+    `<button type="button" data-estado="${k}" aria-pressed="${k === local.estado}">${e.nombre}</button>`).join('');
+  $('panel-productos').innerHTML = PRODUCTOS.map((p) =>
+    `<label class="fila-check"><span>${esc(p.nombre)}</span><input type="checkbox" data-agotado="${p.id}" ${agotado(p.id) ? 'checked' : ''}></label>`).join('');
+}
+function textoCobro(c) {
+  if (c.pago === 'Transferencia') return { titulo: `TRANSFERENCIA ${plata(c.total)}`, chico: 'Verificar el comprobante' };
+  const paga = Number(c.pagaCon);
+  return {
+    titulo: `COBRAR ${plata(c.total)} EN EFECTIVO`,
+    chico: paga && paga >= c.total ? `Paga con ${plata(paga)} · Vuelto ${plata(paga - c.total)}` : (paga ? `Paga con ${plata(paga)}` : ''),
+  };
+}
+function ticketHtml(c) {
+  const items = c.lineas.map((l) => `<div class="tk-item"><b>${l.cant}x ${esc(nombreLinea(l))}</b>
+    ${l.sin.map((s) => `<div class="tk-sin">SIN ${esc(s)}</div>`).join('')}
+    ${l.extras.map((e) => `<div class="tk-con">+ ${esc(e)}</div>`).join('')}
+    ${l.nota ? `<div class="tk-nota">${esc(l.nota)}</div>` : ''}</div>`).join('');
+  const cobro = textoCobro(c);
+  const numero = esc(numeroComanda(c));
+  return `<section class="tk">
+    <img class="tk-logo" src="img/logo_bn.png" alt=""><div class="tk-marca">SMASH HOUSE</div>
+    <hr class="tk-linea">
+    <div class="tk-fila"><div class="tk-hora">PARA LAS<b>${c.turno}</b></div><div class="tk-cod">#${numero}</div></div>
+    <div class="tk-banda">${c.modo === 'delivery' ? 'DELIVERY' : 'RETIRA EN EL LOCAL'}</div>
+    ${items}
+    <div class="tk-chico">Turno ${c.turno}: ${ocupados(c.turno)} de ${local.cupo} hamburguesas</div>
+    <hr class="tk-corte">
+    <div class="tk-fila"><b>#${numero} · ${esc(c.nombre)}</b><span class="tk-chico">${c.turno}</span></div>
+    ${c.modo === 'delivery' ? `<div class="tk-dir">${esc(c.direccion)}</div><div>${esc(c.zona || '')}</div>` : `<div>Retira en ${esc(DIRECCION)}</div>`}
+    <div class="tk-cobro">${esc(cobro.titulo)}${cobro.chico ? `<small>${esc(cobro.chico)}</small>` : ''}</div>
+  </section>`;
+}
+async function imprimir(lista) {
+  $('ticket').innerHTML = lista.map(ticketHtml).join('');
+  try { await $('ticket').querySelector('img').decode(); } catch { /* imprime igual, sin logo */ }
+  window.print();
+}
+
+/* ==== Seguimiento: sin base de datos, la página cuenta los minutos sola ==== */
+const MINUTOS_COMANDA = 3;
 const ESCENAS = {
   ticket: `<div class="e-impresora" aria-hidden="true"><div class="e-caja"></div><div class="e-papel"><i></i><i></i><i></i><i></i></div></div>`,
   plancha: `<svg class="e-svg" viewBox="0 0 260 170" aria-hidden="true">
@@ -771,135 +950,112 @@ const ESCENAS = {
       <rect x="24" y="122" width="212" height="14" rx="4" fill="#0A0A0C"/>
       <rect x="36" y="136" width="14" height="18" fill="#0A0A0C"/><rect x="210" y="136" width="14" height="18" fill="#0A0A0C"/>
     </svg>`,
-  camino: `<div class="e-camino" aria-hidden="true">
-      <span class="e-paisaje">🌵</span><span class="e-paisaje">🏠</span><span class="e-paisaje">🌳</span>
-      <div class="e-ruta"></div><span class="e-moto">🛵</span>
-    </div>`,
-  bolsa: `<svg class="e-svg" viewBox="0 0 220 176" aria-hidden="true">
-      <g class="e-brillo" fill="#FF741F"><path d="M30 44l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/><path d="M190 30l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/><path d="M186 112l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/></g>
-      <g class="e-bolsa">
-        <path d="M66 42l13-20h62l13 20z" fill="#B38E66" stroke="#0A0A0C" stroke-width="3"/>
-        <rect x="66" y="42" width="88" height="118" rx="4" fill="#C9A77C" stroke="#0A0A0C" stroke-width="3"/>
-        <text x="110" y="104" text-anchor="middle" font-family="Caprasimo,Georgia,serif" font-size="30" fill="#C20907">CONI</text>
-        <text x="110" y="124" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" font-weight="800" fill="#0A0A0C">SMASH HOUSE</text>
-      </g>
-    </svg>`,
-  corazon: '<span class="e-corazon" aria-hidden="true">🧡</span>',
-  triste: '<span class="e-triste" aria-hidden="true">🫣</span>',
+};
+const seguimiento = { datos: null, fase: null, abrioComprobante: false };
+const pedidoPropio = () => { const p = leerLocal('coni_pedido'); return p && p.cod === seguimiento.datos?.c ? p : null; };
+const claveComprobante = () => `coni_comprobante_${seguimiento.datos.c}`;
+const hrefWhatsApp = (texto) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+
+function faseActual() {
+  const d = seguimiento.datos;
+  const propio = pedidoPropio();
+  if (propio && !propio.mandadoEn) return { fase: 'mandar', resta: 0 };
+  const resta = (propio?.mandadoEn || d.ts) + MINUTOS_COMANDA * 60000 - Date.now();
+  return resta > 0 ? { fase: 'tomando', resta } : { fase: 'tomada', resta: 0 };
+}
+const relojMinutos = (ms) => {
+  const seg = Math.ceil(ms / 1000);
+  return `${Math.floor(seg / 60)}:${String(seg % 60).padStart(2, '0')}`;
 };
 
-const seguimiento = { datos: null, estado: 'nuevo', hora: null, t: 0, fuente: null, conectado: false, cambio: false };
-
-function pasosHtml() {
-  const final = seguimiento.datos.m === 'd' ? 'En camino' : 'Listo';
-  const orden = ['nuevo', 'confirmado', 'plancha', seguimiento.datos.m === 'd' ? 'camino' : 'listo', 'terminado'];
-  let i = orden.indexOf(seguimiento.estado);
-  if (i < 0) i = 0;
-  const nombres = ['Mandado', 'Confirmado', 'En la plancha', final];
-  return `<ol class="sg-pasos">${nombres.map((n, j) => `<li class="${j < i || i === 4 ? 'hecho' : j === i ? 'activo' : ''}">${n}</li>`).join('')}</ol>`;
+function comprobanteHtml(fase) {
+  const d = seguimiento.datos;
+  if (d.p !== 't' || fase === 'mandar') return '';
+  if (leerLocal(claveComprobante())) {
+    return `<div class="comprobante hecho"><h2>✓ Comprobante mandado</h2><p>Coni lo revisa en el chat de WhatsApp.</p></div>`;
+  }
+  const texto = `Hola! Te mando el comprobante del pedido #${d.c}`;
+  return `<div class="comprobante">
+    <h2>⚠️ Falta tu comprobante</h2>
+    <p>Sin comprobante tu pedido no sale. Transferí <b>${plata(Number(d.tot) || 0)}</b> y mandanos la captura por WhatsApp.</p>
+    <div class="alias"><span>Alias: <b>${esc(ALIAS)}</b><small>A nombre de ${esc(TITULAR)}</small></span><button type="button" data-copiar-alias>Copiar</button></div>
+    <a class="btn btn-wa" id="sg-comprobante" target="_blank" rel="noopener" href="${esc(hrefWhatsApp(texto))}">Mandar comprobante por WhatsApp</a>
+    ${seguimiento.abrioComprobante ? '<button class="btn btn-papel" type="button" id="sg-ya-mande">Ya lo mandé</button>' : ''}
+  </div>`;
 }
 
 function pintarSeguimiento() {
   const d = seguimiento.datos;
   if (!d) return;
-  const pasado = Date.now() - d.ts > 14 * 3600 * 1000;
-  const estado = pasado && ['nuevo', 'confirmado', 'plancha', 'listo', 'camino'].includes(seguimiento.estado) ? 'terminado' : seguimiento.estado;
-  const txt = TEXTOS[estado] || TEXTOS.nuevo;
-  const hora = seguimiento.hora || d.h;
-  const propio = leerLocal('coni_pedido');
-  const esMio = propio && propio.cod === d.c;
+  const { fase, resta } = faseActual();
+  seguimiento.fase = fase;
+  const propio = pedidoPropio();
+  const delivery = d.m === 'd';
+  const viejo = Date.now() - d.ts > 14 * 3600 * 1000;
 
-  let titulo = txt.titulo;
-  let texto = txt.texto;
-  let whatsapp = '';
-  if (estado === 'nuevo' && esMio) {
-    const href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(propio.mensaje)}`;
-    if (!propio.mandado) {
-      titulo = 'Último paso';
-      texto = 'Mandanos el pedido por WhatsApp para que lo confirmemos. Solo tocás enviar y volvés acá.';
-      whatsapp = `<a class="btn btn-wa" id="sg-wa" target="_blank" rel="noopener" href="${esc(href)}">Mandar por WhatsApp</a>`;
-    } else {
-      whatsapp = `<a class="btn btn-papel" id="sg-wa" target="_blank" rel="noopener" href="${esc(href)}">Volver a mandarlo por WhatsApp</a>`;
-    }
+  let titulo;
+  let texto;
+  let extra = '';
+  if (viejo) {
+    titulo = 'Este pedido ya pasó';
+    texto = 'Si querés hacer otro, la carta está abajo.';
+  } else if (fase === 'mandar') {
+    titulo = 'Último paso';
+    texto = 'Mandanos el pedido por WhatsApp. Solo tocás enviar y volvés acá.';
+    extra = `<a class="btn btn-wa" id="sg-wa" target="_blank" rel="noopener" href="${esc(hrefWhatsApp(propio.mensaje))}">Mandar por WhatsApp</a>`;
+  } else if (fase === 'tomando') {
+    titulo = 'Estamos tomando tu comanda';
+    texto = 'En unos minutos queda lista.';
+    extra = `<p class="sg-numero">Se toma en<b id="sg-cuenta">${relojMinutos(resta)}</b></p>`;
+  } else {
+    titulo = '¡Se tomó tu comanda!';
+    texto = delivery
+      ? `Tu pedido ya está en marcha. Te lo llevamos para las ${d.h}.`
+      : `Tu pedido ya está en marcha. Pasá a buscarlo a las ${d.h} por ${DIRECCION}.`;
+    if (!delivery) extra = `<a class="btn btn-negro" target="_blank" rel="noopener" href="${MAPA}">Cómo llegar</a>`;
   }
 
-  let demora = '';
-  const turnoTs = horaDelTurno(d.ts, hora);
-  const faltan = Math.round((turnoTs - Date.now()) / 60000);
-  if (['confirmado', 'plancha'].includes(estado) && faltan < -10) demora = '<p class="sg-demora">Se está demorando un poco. Gracias por la paciencia 🧡</p>';
-  const cuenta = ['nuevo', 'confirmado', 'plancha'].includes(estado)
-    ? `<p class="sg-hora">Para las ${esc(hora)}${faltan > 0 && faltan < 600 ? ` · faltan ${faltan} min` : ''}</p>` : '';
-  const numero = estado === 'listo' ? `<p class="sg-numero">Decí este número al retirar<b>#${esc(d.c)}</b></p><a class="btn btn-negro" target="_blank" rel="noopener" href="${MAPA}">Cómo llegar</a>` : '';
-  const conexion = seguimiento.conectado ? 'Se actualiza solo mientras tengas esta página abierta.' : '⚠️ Sin conexión: reintentando. El pedido no se pierde.';
-  const final = ['terminado', 'rechazado', 'vencido'].includes(estado);
-
-  const escena = $('seguimiento').querySelector('.sg-escena');
-  const mismaEscena = escena && escena.dataset.escena === txt.escena;
-  const escenaHtml = mismaEscena ? escena.innerHTML : ESCENAS[txt.escena];
+  const hora = viejo ? '' : `<p class="sg-hora">Para las ${esc(d.h)} · ${delivery ? 'Delivery' : 'Retiro'}</p>`;
+  const pasos = [['Mandado', fase !== 'mandar'], ['Comanda tomada', fase === 'tomada']];
+  if (d.p === 't') pasos.push(['Comprobante', Boolean(leerLocal(claveComprobante()))]);
+  const activo = pasos.findIndex(([, hecho]) => !hecho);
+  const escena = fase === 'tomada' && !viejo ? 'plancha' : 'ticket';
+  const actual = $('seguimiento').querySelector('.sg-escena');
+  const escenaHtml = actual && actual.dataset.escena === escena ? actual.innerHTML : ESCENAS[escena];
 
   $('seguimiento').innerHTML = `
     <div class="sg-cab"><span>Tu pedido</span><span class="sg-cod">#${esc(d.c)}</span></div>
-    <div class="sg-escena ${seguimiento.cambio ? 'cambio' : ''}" data-escena="${txt.escena}">${escenaHtml}</div>
+    <div class="sg-escena" data-escena="${escena}">${escenaHtml}</div>
     <h1>${esc(titulo)}</h1>
     <p class="sg-texto">${esc(texto)}</p>
-    ${cuenta}${demora}${numero}${whatsapp}
-    ${['rechazado', 'vencido'].includes(estado) ? `<a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hola, consulto por mi pedido #${d.c}`)}">Escribirnos por WhatsApp</a>` : ''}
-    ${['rechazado', 'vencido'].includes(estado) ? '' : pasosHtml()}
+    ${hora}${extra}
+    ${viejo ? '' : comprobanteHtml(fase)}
+    <ol class="sg-pasos" style="grid-template-columns:repeat(${pasos.length},minmax(0,1fr))">${pasos.map(([n, hecho], i) => `<li class="${hecho ? 'hecho' : i === activo ? 'activo' : ''}">${n}</li>`).join('')}</ol>
     <div class="sg-detalle">
       <ul>${(Array.isArray(d.r) ? d.r : []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
       <div><span>Total</span><span>${plata(Number(d.tot) || 0)}</span></div>
     </div>
-    ${final ? '' : `<p class="sg-conexion">${conexion}</p>`}
     <p class="sg-mas">Mientras esperás, seguinos y entrá a los sorteos.</p>
     <div class="sg-links">
       <a class="link" target="_blank" rel="noopener" href="https://www.instagram.com/conismash/">@conismash</a>
       <a class="link" href="#carta">Ver la carta</a>
     </div>`;
-  seguimiento.cambio = false;
 }
 
-function avisarCambio(estado) {
-  seguimiento.cambio = true;
-  navigator.vibrate?.([200, 100, 200]);
-  const titulos = { confirmado: 'Pedido confirmado', plancha: 'En la plancha', listo: '¡Ya podés retirarlo!', camino: '¡Tu pedido salió!', terminado: 'Que la disfrutes' };
-  if (titulos[estado]) document.title = `🍔 ${titulos[estado]}`;
-  try {
-    const audio = new (window.AudioContext || window.webkitAudioContext)();
-    const nota = audio.createOscillator();
-    const volumen = audio.createGain();
-    nota.frequency.value = 740;
-    volumen.gain.value = 0.15;
-    nota.connect(volumen).connect(audio.destination);
-    nota.start();
-    nota.stop(audio.currentTime + 0.25);
-  } catch { /* el navegador puede no permitir sonido sin un toque previo */ }
-}
-
-function recibirEstado(texto) {
-  const salida = JSON.parse(texto);
-  if (salida.event !== 'message') return;
-  const m = JSON.parse(salida.message);
-  if (!TEXTOS[m.e] || (m.t || 0) < seguimiento.t) return;
-  const cambio = m.e !== seguimiento.estado;
-  seguimiento.t = m.t || 0;
-  seguimiento.estado = m.e;
-  if (TURNOS.includes(m.h)) seguimiento.hora = m.h;
-  if (cambio && seguimiento.yaLeido) avisarCambio(m.e);
-  pintarSeguimiento();
-}
-
-function conectarSeguimiento() {
-  seguimiento.fuente?.close();
-  const fuente = new EventSource(`${NTFY}/${topicoPedido(seguimiento.datos.k)}/sse?since=12h`);
-  seguimiento.fuente = fuente;
-  fuente.onopen = () => {
-    seguimiento.conectado = true;
+/* Cada segundo: baja el reloj, y al llegar a cero pasa a "se tomó tu comanda". */
+function avanzarSeguimiento() {
+  if (!seguimiento.datos) return;
+  const { fase, resta } = faseActual();
+  if (fase !== seguimiento.fase) {
+    if (fase === 'tomada') {
+      navigator.vibrate?.([200, 100, 200]);
+      document.title = '🍔 ¡Se tomó tu comanda!';
+    }
     pintarSeguimiento();
-    /* Lo que llega apenas conecta es historia: solo avisa con ruido lo que cambia después. */
-    setTimeout(() => { seguimiento.yaLeido = true; }, 1500);
-  };
-  fuente.onerror = () => { seguimiento.conectado = false; pintarSeguimiento(); };
-  fuente.onmessage = (ev) => { try { recibirEstado(ev.data); } catch { /* ignora lo que no entiende */ } };
+    return;
+  }
+  const cuenta = $('sg-cuenta');
+  if (cuenta) cuenta.textContent = relojMinutos(resta);
 }
 
 function pintarBanner() {
@@ -917,27 +1073,30 @@ function rutear() {
   const m = location.hash.match(/^#p=([A-Za-z0-9_-]+)/);
   const datos = m ? leerEnlace(m[1]) : null;
   if (datos) {
-    Object.assign(seguimiento, { datos, estado: 'nuevo', hora: null, t: 0, yaLeido: false, conectado: false });
+    Object.assign(seguimiento, { datos, fase: null, abrioComprobante: false });
     $('tienda').hidden = true;
     $('seguimiento').hidden = false;
     $('barra').hidden = true;
     $('seguimiento').innerHTML = '';
     window.scrollTo(0, 0);
     pintarSeguimiento();
-    conectarSeguimiento();
   } else {
-    seguimiento.fuente?.close();
     seguimiento.datos = null;
     $('seguimiento').hidden = true;
     $('tienda').hidden = false;
     document.title = 'Coni Smash · Prueba';
     actualizarTodo();
-    leerLocalPanel();
   }
   pintarBanner();
 }
 
 /* ==== Eventos ==== */
+async function copiarAlias(boton) {
+  try { await navigator.clipboard.writeText(ALIAS); boton.textContent = '¡Copiado!'; }
+  catch { boton.textContent = 'Copialo a mano'; }
+  setTimeout(() => { boton.textContent = 'Copiar'; }, 1800);
+}
+
 document.addEventListener('click', (ev) => {
   if (ev.target.tagName === 'DIALOG') { ev.target.close(); return; }
   const t = ev.target.closest('button,a');
@@ -945,11 +1104,25 @@ document.addEventListener('click', (ev) => {
   const d = t.dataset;
 
   if (t.id === 'sg-wa') {
-    const propio = leerLocal('coni_pedido');
-    if (propio) { propio.mandado = true; guardarLocal('coni_pedido', propio); }
+    const propio = pedidoPropio();
+    if (propio) {
+      propio.mandadoEn = Date.now();
+      guardarLocal('coni_pedido', propio);
+    }
     setTimeout(pintarSeguimiento, 300);
     return;
   }
+  if (t.id === 'sg-comprobante') {
+    seguimiento.abrioComprobante = true;
+    setTimeout(pintarSeguimiento, 300);
+    return;
+  }
+  if (t.id === 'sg-ya-mande') {
+    guardarLocal(claveComprobante(), true);
+    pintarSeguimiento();
+    return;
+  }
+  if ('copiarAlias' in d) { copiarAlias(t); return; }
   if ('cerrar' in d) { t.closest('dialog').close(); return; }
   if (d.prod) { abrirProducto(d.prod); return; }
 
@@ -974,41 +1147,65 @@ document.addEventListener('click', (ev) => {
   if (d.modo) { pedido.modo = d.modo; limpiarError('c-modo'); actualizarPedido(); return; }
   if (d.zona) { pedido.zona = d.zona; limpiarError('c-zona'); actualizarPedido(); return; }
   if (d.pago) { pedido.pago = d.pago; limpiarError('c-pago'); actualizarPedido(); return; }
-  if (d.turno) { pedido.turno = d.turno; limpiarError('c-turno'); actualizarPedido(); }
+  if (d.turno) { pedido.turno = d.turno; limpiarError('c-turno'); actualizarPedido(); return; }
+
+  /* Panel de Nico */
+  if (d.tab) { tabPanel = d.tab; pintarPanel(); return; }
+  if (d.lista) {
+    const c = comandas.find((x) => x.n === Number(d.lista));
+    c.lista = !c.lista;
+    pintarComandas();
+    return;
+  }
+  if (d.imprimir) { imprimir(comandas.filter((x) => x.n === Number(d.imprimir))); return; }
+  if (d.imprimirTurno) { imprimir(comandas.filter((x) => x.turno === d.imprimirTurno)); return; }
+  if (d.alternarTurno) {
+    local.cerrados = local.cerrados.includes(d.alternarTurno)
+      ? local.cerrados.filter((x) => x !== d.alternarTurno)
+      : [...local.cerrados, d.alternarTurno];
+    pintarPanelTurnos();
+    actualizarPedido();
+    return;
+  }
+  if (d.estado) { local.estado = d.estado; pintarEstado(); pintarPanel(); actualizarPedido(); }
+});
+
+document.addEventListener('change', (ev) => {
+  const id = ev.target.dataset?.agotado;
+  if (!id) return;
+  local.agotados = ev.target.checked ? [...local.agotados, id] : local.agotados.filter((x) => x !== id);
+  refrescarLocal();
 });
 
 $('prod-menos').addEventListener('click', () => { if (borrador.cant > 1) { borrador.cant--; actualizarProducto(); } });
 $('prod-mas').addEventListener('click', () => { borrador.cant++; actualizarProducto(); });
 $('prod-agregar').addEventListener('click', agregarBorrador);
-$('ver-pedido').addEventListener('click', () => { actualizarTodo(); leerLocalPanel(); $('hoja-pedido').showModal(); });
+$('ver-pedido').addEventListener('click', () => { actualizarTodo(); $('hoja-pedido').showModal(); });
 $('confirmar').addEventListener('click', confirmarPedido);
+$('abrir-panel').addEventListener('click', () => { pintarPanel(); $('hoja-panel').showModal(); });
+const cambiarCupo = (delta) => {
+  local.cupo = Math.min(30, Math.max(1, local.cupo + delta));
+  pintarPanelTurnos();
+  pintarComandas();
+  actualizarPedido();
+};
+$('cupo-menos').addEventListener('click', () => cambiarCupo(-1));
+$('cupo-mas').addEventListener('click', () => cambiarCupo(1));
 
 [['direccion', 'direccion', 'c-direccion'], ['nombre', 'nombre', 'c-nombre']].forEach(([id, campo, c]) => {
   $(id).addEventListener('input', (ev) => { pedido[campo] = ev.target.value.trim(); limpiarError(c); actualizarPedido(); });
 });
 $('paga-con').addEventListener('input', (ev) => { pedido.pagaCon = ev.target.value.replace(/\D/g, ''); actualizarPedido(); });
-
-$('copiar-alias').addEventListener('click', async (ev) => {
-  const b = ev.currentTarget;
-  try { await navigator.clipboard.writeText(ALIAS); b.textContent = '¡Copiado!'; }
-  catch { b.textContent = 'Copialo a mano'; }
-  setTimeout(() => { b.textContent = 'Copiar'; }, 1800);
-});
+$('copiar-alias').addEventListener('click', (ev) => copiarAlias(ev.currentTarget));
 
 window.addEventListener('hashchange', rutear);
-/* Al volver de WhatsApp el celular suele cortar la conexión: se reconecta enseguida. */
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState !== 'visible') return;
-  if (seguimiento.datos) { seguimiento.yaLeido = true; conectarSeguimiento(); pintarSeguimiento(); }
-  else leerLocalPanel();
-});
-setInterval(() => { if (seguimiento.datos && document.visibilityState === 'visible') pintarSeguimiento(); }, 30000);
-setInterval(() => { if (!seguimiento.datos && document.visibilityState === 'visible') leerLocalPanel(); }, 60000);
+setInterval(avanzarSeguimiento, 1000);
 
 /* ==== Inicio ==== */
 $('alias').textContent = ALIAS;
 $('alias-titular').textContent = 'A nombre de ' + TITULAR;
 $('link-mapa').href = MAPA;
+comandas = comandasDeEjemplo();
 $('zonas').innerHTML = ZONAS.map((z) => `<button type="button" data-zona="${esc(z.nombre)}" aria-pressed="false">${esc(z.nombre)}<small>${plata(z.envio)}</small></button>`).join('');
 pintarCarta();
 pintarEstado();
