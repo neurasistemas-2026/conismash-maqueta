@@ -92,8 +92,18 @@ const plata = (n) => '$' + Number(n).toLocaleString('es-AR');
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const producto = (id) => PRODUCTOS.find((p) => p.id === id);
 const limpio = (s) => String(s ?? '').replace(/\p{Extended_Pictographic}|️|‍/gu, '').trim();
-const leerLocal = (clave) => { try { return JSON.parse(localStorage.getItem(clave)); } catch { return null; } };
-const guardarLocal = (clave, valor) => { try { localStorage.setItem(clave, JSON.stringify(valor)); } catch { /* sin almacenamiento también funciona */ } };
+const memoria = {};
+const leerLocal = (clave) => {
+  try {
+    const guardado = localStorage.getItem(clave);
+    if (guardado !== null) return JSON.parse(guardado);
+  } catch { /* usa la copia en memoria */ }
+  return memoria[clave] ?? null;
+};
+const guardarLocal = (clave, valor) => {
+  memoria[clave] = valor;
+  try { localStorage.setItem(clave, JSON.stringify(valor)); } catch { /* sin almacenamiento también funciona */ }
+};
 
 function precioUnitario(l) {
   const p = producto(l.id);

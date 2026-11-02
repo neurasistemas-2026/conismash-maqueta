@@ -190,14 +190,11 @@ summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-dec
 @keyframes prensa{0%,38%{transform:translateY(-22px)}52%,78%{transform:translateY(8px)}100%{transform:translateY(-22px)}}
 @keyframes humo{0%{opacity:0;transform:translateY(8px)}40%{opacity:.75}100%{opacity:0;transform:translateY(-16px)}}
 /* Comprobante */
-.comprobante{margin:0 0 14px;padding:14px;text-align:left;background:#FBE7E3;border:2px solid var(--rojo);border-radius:14px}
-.comprobante h2{font-size:22px;color:var(--rojo)}
-.comprobante p{margin:6px 0 10px}
-.comprobante .alias{margin:0 0 10px;background:#fff}
+.comprobante{margin:0 0 14px;padding:14px;text-align:left;background:var(--papel);border:2px solid var(--linea);border-radius:14px}
+.comprobante p{margin:0 0 10px}
+.comprobante .alias{margin:0 0 10px}
 .comprobante .btn{margin-bottom:8px}
-.comprobante.hecho{background:#E3F2E8;border-color:var(--verde)}
-.comprobante.hecho h2{color:var(--verde)}
-.comprobante.hecho p{margin-bottom:0}
+.comprobante .btn:last-child{margin-bottom:0}
 
 /* Panel de Nico */
 .panel-nota{margin:6px 0 0;font-size:14px;color:var(--suave)}
@@ -423,7 +420,7 @@ summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-dec
           <span>Alias: <b id="alias"></b><small id="alias-titular"></small></span>
           <button type="button" id="copiar-alias">Copiar</button>
         </div>
-        <p class="aviso-chico" id="nota-comprobante" hidden>Después de pedir, nos tenés que mandar el comprobante por WhatsApp.</p>
+        <p class="sub" id="nota-comprobante" hidden>Después de pedir, cuando puedas, nos mandás el comprobante por WhatsApp.</p>
         <div class="campo" id="bloque-vuelto" hidden>
           <label for="paga-con">¿Con cuánto pagás? <small>(opcional, para el vuelto)</small></label>
           <input type="tel" inputmode="numeric" id="paga-con" maxlength="9" placeholder="Ej: 20000">
@@ -951,15 +948,17 @@ const ESCENAS = {
       <rect x="36" y="136" width="14" height="18" fill="#0A0A0C"/><rect x="210" y="136" width="14" height="18" fill="#0A0A0C"/>
     </svg>`,
 };
-const seguimiento = { datos: null, fase: null, abrioComprobante: false };
+const seguimiento = { datos: null, fase: null };
 const pedidoPropio = () => { const p = leerLocal('coni_pedido'); return p && p.cod === seguimiento.datos?.c ? p : null; };
 const claveComprobante = () => `coni_comprobante_${seguimiento.datos.c}`;
 const hrefWhatsApp = (texto) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
 
+/* Con transferencia, la comanda se da por tomada al tocar "Ya lo mandé". En efectivo, cuando termina el conteo. */
 function faseActual() {
   const d = seguimiento.datos;
   const propio = pedidoPropio();
   if (propio && !propio.mandadoEn) return { fase: 'mandar', resta: 0 };
+  if (d.p === 't') return { fase: leerLocal(claveComprobante()) === 'mandado' ? 'tomada' : 'comprobante', resta: 0 };
   const resta = (propio?.mandadoEn || d.ts) + MINUTOS_COMANDA * 60000 - Date.now();
   return resta > 0 ? { fase: 'tomando', resta } : { fase: 'tomada', resta: 0 };
 }
@@ -968,19 +967,15 @@ const relojMinutos = (ms) => {
   return `${Math.floor(seg / 60)}:${String(seg % 60).padStart(2, '0')}`;
 };
 
-function comprobanteHtml(fase) {
+function comprobanteHtml() {
   const d = seguimiento.datos;
-  if (d.p !== 't' || fase === 'mandar') return '';
-  if (leerLocal(claveComprobante())) {
-    return `<div class="comprobante hecho"><h2>✓ Comprobante mandado</h2><p>Coni lo revisa en el chat de WhatsApp.</p></div>`;
-  }
+  const abierto = leerLocal(claveComprobante()) === 'abierto';
   const texto = `Hola! Te mando el comprobante del pedido #${d.c}`;
   return `<div class="comprobante">
-    <h2>⚠️ Falta tu comprobante</h2>
-    <p>Sin comprobante tu pedido no sale. Transferí <b>${plata(Number(d.tot) || 0)}</b> y mandanos la captura por WhatsApp.</p>
+    <p>Total a transferir: <b>${plata(Number(d.tot) || 0)}</b></p>
     <div class="alias"><span>Alias: <b>${esc(ALIAS)}</b><small>A nombre de ${esc(TITULAR)}</small></span><button type="button" data-copiar-alias>Copiar</button></div>
     <a class="btn btn-wa" id="sg-comprobante" target="_blank" rel="noopener" href="${esc(hrefWhatsApp(texto))}">Mandar comprobante por WhatsApp</a>
-    ${seguimiento.abrioComprobante ? '<button class="btn btn-papel" type="button" id="sg-ya-mande">Ya lo mandé</button>' : ''}
+    ${abierto ? '<button class="btn btn-naranja" type="button" id="sg-ya-mande">Ya lo mandé</button>' : ''}
   </div>`;
 }
 
@@ -988,6 +983,7 @@ function pintarSeguimiento() {
   const d = seguimiento.datos;
   if (!d) return;
   const { fase, resta } = faseActual();
+  const recienTomada = fase === 'tomada' && seguimiento.fase && seguimiento.fase !== 'tomada';
   seguimiento.fase = fase;
   const propio = pedidoPropio();
   const delivery = d.m === 'd';
@@ -1003,6 +999,10 @@ function pintarSeguimiento() {
     titulo = 'Último paso';
     texto = 'Mandanos el pedido por WhatsApp. Solo tocás enviar y volvés acá.';
     extra = `<a class="btn btn-wa" id="sg-wa" target="_blank" rel="noopener" href="${esc(hrefWhatsApp(propio.mensaje))}">Mandar por WhatsApp</a>`;
+  } else if (fase === 'comprobante') {
+    titulo = '¡Pedido mandado!';
+    texto = 'Cuando puedas, mandanos el comprobante de la transferencia por WhatsApp.';
+    extra = comprobanteHtml();
   } else if (fase === 'tomando') {
     titulo = 'Estamos tomando tu comanda';
     texto = 'En unos minutos queda lista.';
@@ -1015,9 +1015,13 @@ function pintarSeguimiento() {
     if (!delivery) extra = `<a class="btn btn-negro" target="_blank" rel="noopener" href="${MAPA}">Cómo llegar</a>`;
   }
 
+  if (fase === 'tomada' && !viejo) document.title = '🍔 ¡Se tomó tu comanda!';
+  if (recienTomada) navigator.vibrate?.([200, 100, 200]);
+
   const hora = viejo ? '' : `<p class="sg-hora">Para las ${esc(d.h)} · ${delivery ? 'Delivery' : 'Retiro'}</p>`;
-  const pasos = [['Mandado', fase !== 'mandar'], ['Comanda tomada', fase === 'tomada']];
-  if (d.p === 't') pasos.push(['Comprobante', Boolean(leerLocal(claveComprobante()))]);
+  const pasos = d.p === 't'
+    ? [['Mandado', fase !== 'mandar'], ['Comprobante', fase === 'tomada'], ['Comanda tomada', fase === 'tomada']]
+    : [['Mandado', fase !== 'mandar'], ['Comanda tomada', fase === 'tomada']];
   const activo = pasos.findIndex(([, hecho]) => !hecho);
   const escena = fase === 'tomada' && !viejo ? 'plancha' : 'ticket';
   const actual = $('seguimiento').querySelector('.sg-escena');
@@ -1029,7 +1033,6 @@ function pintarSeguimiento() {
     <h1>${esc(titulo)}</h1>
     <p class="sg-texto">${esc(texto)}</p>
     ${hora}${extra}
-    ${viejo ? '' : comprobanteHtml(fase)}
     <ol class="sg-pasos" style="grid-template-columns:repeat(${pasos.length},minmax(0,1fr))">${pasos.map(([n, hecho], i) => `<li class="${hecho ? 'hecho' : i === activo ? 'activo' : ''}">${n}</li>`).join('')}</ol>
     <div class="sg-detalle">
       <ul>${(Array.isArray(d.r) ? d.r : []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
@@ -1042,18 +1045,11 @@ function pintarSeguimiento() {
     </div>`;
 }
 
-/* Cada segundo: baja el reloj, y al llegar a cero pasa a "se tomó tu comanda". */
+/* Cada segundo: baja el reloj del pedido en efectivo y cambia de pantalla al llegar a cero. */
 function avanzarSeguimiento() {
   if (!seguimiento.datos) return;
   const { fase, resta } = faseActual();
-  if (fase !== seguimiento.fase) {
-    if (fase === 'tomada') {
-      navigator.vibrate?.([200, 100, 200]);
-      document.title = '🍔 ¡Se tomó tu comanda!';
-    }
-    pintarSeguimiento();
-    return;
-  }
+  if (fase !== seguimiento.fase) { pintarSeguimiento(); return; }
   const cuenta = $('sg-cuenta');
   if (cuenta) cuenta.textContent = relojMinutos(resta);
 }
@@ -1073,7 +1069,7 @@ function rutear() {
   const m = location.hash.match(/^#p=([A-Za-z0-9_-]+)/);
   const datos = m ? leerEnlace(m[1]) : null;
   if (datos) {
-    Object.assign(seguimiento, { datos, fase: null, abrioComprobante: false });
+    Object.assign(seguimiento, { datos, fase: null });
     $('tienda').hidden = true;
     $('seguimiento').hidden = false;
     $('barra').hidden = true;
@@ -1113,13 +1109,14 @@ document.addEventListener('click', (ev) => {
     return;
   }
   if (t.id === 'sg-comprobante') {
-    seguimiento.abrioComprobante = true;
+    guardarLocal(claveComprobante(), 'abierto');
     setTimeout(pintarSeguimiento, 300);
     return;
   }
   if (t.id === 'sg-ya-mande') {
-    guardarLocal(claveComprobante(), true);
+    guardarLocal(claveComprobante(), 'mandado');
     pintarSeguimiento();
+    window.scrollTo(0, 0);
     return;
   }
   if ('copiarAlias' in d) { copiarAlias(t); return; }
