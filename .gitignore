@@ -1,0 +1,7 @@
+# Al repositorio público solo van los archivos de la web: las notas y capturas quedan en Obsidian.
+*
+!.gitignore
+!.nojekyll
+!index.html
+!img/
+!img/**
