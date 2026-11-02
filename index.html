@@ -3,40 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Coni Smash · Maqueta</title>
+<title>Coni Smash · Prueba</title>
 <meta name="theme-color" content="#FF741F">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/comun.css">
 <style>
-:root{
-  color-scheme:light;
-  --naranja:#FF741F; --rojo:#C20907; --negro:#0A0A0C; --verde:#1F603C;
-  --amarillo:#FACF4E; --crema:#F1E8D4; --papel:#FBF6EA; --kraft:#A8865E;
-  --kraft-claro:#DCC8A8; --wa:#25D366; --suave:#55504A; --linea:#0A0A0C26;
-  --azul:#2E3A6B; --bordo:#772426; --placa:#F9EEDD;
-  --display:'Caprasimo','Cooper Black',Georgia,serif;
-  --texto:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --cuadros:conic-gradient(var(--bordo) 25%,var(--crema) 0 50%,var(--bordo) 0 75%,var(--crema) 0);
-}
-*{box-sizing:border-box}
-[hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--cuadros) 0 0/48px 48px;color:var(--negro);font:500 16px/1.45 var(--texto)}
-body:has(dialog[open]){overflow:hidden}
-img{display:block;max-width:100%}
-button,input,textarea{font:inherit;color:inherit}
-button{cursor:pointer;background:none;border:0;padding:0}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--verde);outline-offset:2px}
-h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;margin:0}
+body{background:var(--cuadros) 0 0/48px 48px}
 .app{position:relative;max-width:480px;min-height:100dvh;margin:0 auto;background:var(--crema);padding-bottom:104px;overflow-x:clip}
 
-/* Barra de maqueta */
-.maqueta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 16px;background:var(--kraft-claro);font-size:13px;font-weight:600}
-.maqueta button{min-height:36px;padding:0 12px;border:2px solid var(--negro);border-radius:999px;background:var(--papel);font-weight:700;white-space:nowrap}
+/* Barra de prueba */
+.maqueta{padding:7px 16px;background:var(--kraft-claro);font-size:13px;font-weight:600;text-align:center}
 
 /* Cabecera */
 .top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px;padding:0 16px;background:var(--crema);border-bottom:2px solid var(--negro)}
@@ -49,6 +29,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;margin:0}
 .estado.full i{background:#E8A200}
 .estado.cerrado i{background:var(--rojo)}
 .aviso{padding:12px 16px;background:var(--negro);color:var(--crema);font-weight:600}
+.banner-pedido{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;background:var(--amarillo);border-bottom:2px solid var(--negro);font-weight:800;text-decoration:none}
 
 /* Portada */
 .hero{position:relative;min-height:min(76svh,620px);display:flex;flex-direction:column;justify-content:flex-end;color:var(--crema);background:var(--negro)}
@@ -60,14 +41,6 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;margin:0}
 .hero p{margin:0 0 18px;max-width:34ch;font-size:16px}
 .sticker{position:absolute;z-index:1;top:18px;right:14px;width:104px;height:104px;display:grid;place-content:center;text-align:center;border-radius:50%;background:var(--naranja);color:var(--negro);box-shadow:0 0 0 4px #fff,0 6px 16px #0006;transform:rotate(9deg);font-weight:700;font-size:11.5px;line-height:1.1}
 .sticker b{display:block;font:400 22px/1 var(--display)}
-
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;padding:8px 16px;border:2px solid var(--negro);border-radius:14px;font-weight:800;font-size:17px;text-align:center;text-decoration:none;box-shadow:0 3px 0 var(--negro);transition:transform .08s,box-shadow .08s}
-.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--negro)}
-.btn-naranja{background:var(--naranja);color:var(--negro)}
-.btn-negro{background:var(--negro);color:var(--crema);box-shadow:0 3px 0 #0A0A0C80}
-.btn-wa{background:var(--wa);color:var(--negro)}
-.btn[aria-disabled=true],.btn:disabled{background:#CFC8BA;color:#403C36;box-shadow:none;cursor:not-allowed}
-
 .datos{display:grid;gap:2px;padding:14px 16px;background:var(--negro);color:var(--crema);font-size:14px;font-weight:600}
 .cuadros{height:32px;background:var(--cuadros) 0 0/32px 32px;border-block:2px solid var(--negro)}
 
@@ -122,28 +95,9 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;margin:0}
 .barra .btn{justify-content:space-between}
 .barra-cant{display:inline-grid;place-items:center;min-width:30px;height:30px;padding:0 6px;border-radius:999px;background:var(--negro);color:var(--crema);font-size:14px}
 
-/* Hojas */
-dialog{width:100%;max-width:480px;max-height:94dvh;margin:auto auto 0;padding:0;border:0;border-radius:22px 22px 0 0;background:var(--papel);color:var(--negro);overflow:hidden}
-dialog[open]{display:flex;flex-direction:column}
-dialog::backdrop{background:#0A0A0Ca6}
-@media (prefers-reduced-motion:no-preference){dialog[open]{animation:subir .22s ease-out}}
-@keyframes subir{from{transform:translateY(32px);opacity:.4}}
-.cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
-.pad{padding:16px}
-.hoja-top{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 16px;border-bottom:2px solid var(--negro)}
-.cerrar{flex:none;width:44px;height:44px;border:2px solid var(--negro);border-radius:50%;background:var(--crema);font-size:20px;font-weight:800}
+/* Armar la hamburguesa */
 .foto-prod{width:100%;max-height:46vh;object-fit:contain;background:var(--placa);border-bottom:2px solid var(--linea)}
-.hoja-titulo{font-size:27px;color:var(--rojo)}
 .viene{margin:6px 0 0;font-weight:700;color:var(--verde)}
-.aviso-chico{margin:6px 0 0;font-size:14px;font-weight:700;color:var(--rojo)}
-.sub{margin:6px 0 0;color:var(--suave)}
-.grupo{margin-top:22px}
-.grupo h3{font-size:21px;color:var(--azul)}
-.grupo .ayuda{margin:2px 0 10px;font-size:14px;color:var(--suave)}
-.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;padding:4px;margin-top:10px;background:#0A0A0C14;border-radius:14px}
-.seg button{min-height:52px;padding:4px;border-radius:10px;font-weight:700;line-height:1.15}
-.seg button small{display:block;font-size:13px;font-weight:600}
-.seg button[aria-pressed=true]{background:var(--negro);color:var(--crema)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 14px;border:2px solid var(--negro);border-radius:999px;background:#fff;font-weight:700}
 .chip::before{content:"✓";color:var(--verde);font-weight:800}
@@ -158,15 +112,6 @@ dialog::backdrop{background:#0A0A0Ca6}
 .extra[aria-pressed=true] i{background:var(--negro);color:var(--crema);font-size:16px}
 details{margin-top:18px}
 summary{min-height:44px;display:flex;align-items:center;font-weight:700;text-decoration:underline;cursor:pointer}
-label{display:block;font-weight:700}
-input[type=text],input[type=tel],textarea{display:block;width:100%;min-height:50px;margin-top:6px;padding:12px;border:2px solid var(--negro);border-radius:12px;background:#fff;font-size:16px}
-textarea{min-height:76px;resize:vertical}
-.pie-hoja{display:flex;align-items:center;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--papel);border-top:2px solid var(--negro)}
-.pie-hoja.apilado{flex-direction:column;align-items:stretch;gap:6px}
-.pie-hoja .nota{margin:0;font-size:13px;text-align:center;color:var(--suave)}
-.cant{display:inline-flex;align-items:center;flex:none;border:2px solid var(--negro);border-radius:12px;background:#fff}
-.cant button{width:42px;height:50px;font-size:22px;font-weight:800}
-.cant output{min-width:26px;text-align:center;font-weight:800}
 .resumen{margin:12px 0 0;font-weight:700;color:var(--verde)}
 
 /* Pedido */
@@ -182,29 +127,12 @@ textarea{min-height:76px;resize:vertical}
 .sugerir img{width:56px;height:56px;border-radius:8px;object-fit:cover}
 .sugerir small{display:block;font-weight:600}
 .campo{margin-top:14px}
-.campo.error input,.campo.error .seg,.campo.error .opciones,.campo.error .turnos{outline:3px solid var(--rojo);outline-offset:1px}
+.campo.error input,.campo.error .seg,.campo.error .turnos{outline:3px solid var(--rojo);outline-offset:1px}
 .error-txt{display:none;margin:6px 0 0;font-size:14px;font-weight:700;color:var(--rojo)}
 .campo.error .error-txt{display:block}
 .alias{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding:8px 8px 8px 14px;background:var(--crema);border-radius:12px;font-weight:700;overflow-wrap:anywhere}
-.alias button{flex:none;min-height:44px;padding:0 12px;border:2px solid var(--negro);border-radius:10px;background:var(--papel);font-weight:800}
-.total{margin-top:22px;padding:14px;background:var(--crema);border-radius:14px}
-.total div{display:flex;justify-content:space-between;gap:10px}
-.total .final{margin-top:6px;padding-top:8px;border-top:2px solid var(--negro);font:400 24px/1.1 var(--display)}
-.chat{margin-top:10px;padding:12px;border-radius:14px;background:#E9DFD3}
-.burbuja{margin:0;padding:10px 12px;border-radius:12px 12px 2px 12px;background:#D9FDD3;box-shadow:0 1px 1px #0002;font-size:14.5px;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere}
-.listo{padding:44px 20px 28px;text-align:center}
-.listo div{font-size:60px;line-height:1}
-.listo h2{margin:12px 0 8px;font-size:32px}
-.listo p{margin:0 0 22px}
-
-/* Panel */
-.panel-nota{margin:6px 0 0;font-size:14px;color:var(--suave)}
-.fila-check{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;border-bottom:2px solid var(--linea);font-weight:700}
-.fila-check input{flex:none;width:26px;height:26px;accent-color:var(--rojo)}
-.tabs{position:sticky;top:0;z-index:2;margin-top:12px;background:#E8E1D1}
-
-/* Alias y turnos */
 .alias small{display:block;margin-top:2px;font-size:12.5px;font-weight:500;color:var(--suave)}
+.alias button{flex:none;min-height:44px;padding:0 12px;border:2px solid var(--negro);border-radius:10px;background:var(--papel);font-weight:800}
 .turnos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}
 .turno{min-height:56px;padding:6px 4px;border:2px solid var(--negro);border-radius:12px;background:#fff;font-weight:800;font-size:17px;line-height:1.15;text-align:center}
 .turno small{display:block;font-size:12.5px;font-weight:600;color:var(--verde)}
@@ -213,57 +141,83 @@ textarea{min-height:76px;resize:vertical}
 .turno[aria-pressed=true] small{color:var(--amarillo)}
 .turno:disabled{border-color:var(--linea);background:#E4DCCB;color:#5E584F;font-weight:700;cursor:not-allowed}
 .turno:disabled small{color:#5E584F}
+.total{margin-top:22px;padding:14px;background:var(--crema);border-radius:14px}
+.total div{display:flex;justify-content:space-between;gap:10px}
+.total .final{margin-top:6px;padding-top:8px;border-top:2px solid var(--negro);font:400 24px/1.1 var(--display)}
+.chat{margin-top:10px;padding:12px;border-radius:14px;background:#E9DFD3}
+.burbuja{margin:0;padding:10px 12px;border-radius:12px 12px 2px 12px;background:#D9FDD3;box-shadow:0 1px 1px #0002;font-size:14.5px;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere}
 
-/* Comandas */
-.resumen-noche{margin:14px 0 0;font-weight:700}
-.turno-titulo{display:flex;align-items:center;gap:10px;margin-top:20px;padding-bottom:4px;border-bottom:2px solid var(--negro)}
-.turno-titulo h3{font-size:24px;color:var(--rojo)}
-.turno-titulo span{flex:1;font-size:13.5px;font-weight:600;color:var(--suave)}
-.turno-titulo .link{font-size:13.5px;white-space:nowrap}
-.comanda{margin-top:10px;padding:10px 12px;background:#fff;border:2px solid var(--linea);border-radius:12px}
-.comanda.lista{opacity:.55}
-.comanda header{display:flex;justify-content:space-between;gap:10px;font-weight:800}
-.comanda em{display:inline-block;margin:4px 0 0;padding:1px 8px;border-radius:999px;background:var(--amarillo);font-size:12.5px;font-style:normal;font-weight:800}
-.comanda-modo{margin:4px 0 6px;font-size:13.5px;color:var(--suave)}
-.comanda ul{margin:0;padding:0;list-style:none;font-size:14.5px}
-.comanda li span{display:block;padding-left:12px;font-size:14px;font-weight:700}
-.comanda .sin{color:var(--rojo)}
-.comanda .con{color:var(--verde)}
-.comanda-acc{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
-.btn-chico{min-height:44px;padding:0 12px;border:2px solid var(--negro);border-radius:10px;background:var(--papel);font-weight:800}
-.btn-chico[aria-pressed=true]{background:var(--verde);color:#fff}
+/* Seguimiento */
+.seguimiento{padding:18px 16px 44px;text-align:center}
+.sg-cab{display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:800}
+.sg-cod{font:400 26px/1 var(--display);color:var(--rojo)}
+.sg-escena{position:relative;display:grid;place-items:center;height:190px;margin:14px 0 16px;border:2px solid var(--negro);border-radius:18px;background:var(--placa);overflow:hidden}
+.seguimiento h1{font-size:31px;color:var(--rojo)}
+.sg-texto{margin:8px 0 16px;font-size:17px}
+.sg-hora{margin:0 0 14px;font-weight:800;color:var(--azul)}
+.sg-demora{margin:0 0 14px;padding:10px 12px;background:var(--amarillo);border-radius:12px;font-weight:700}
+.sg-numero{margin:0 0 14px;padding:12px;background:#fff;border:2px dashed var(--negro);border-radius:14px;font-weight:700}
+.sg-numero b{display:block;font:400 44px/1.1 var(--display);color:var(--rojo)}
+.seguimiento .btn{margin-bottom:10px}
+.sg-pasos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin:18px 0;padding:0;list-style:none;font-size:12.5px;font-weight:700;line-height:1.15;color:#6B655C}
+.sg-pasos li{padding-top:8px;border-top:5px solid #0A0A0C22}
+.sg-pasos li.hecho{border-color:var(--verde);color:var(--verde)}
+.sg-pasos li.activo{border-color:var(--naranja);color:var(--negro)}
+.sg-detalle{padding:14px;text-align:left;background:var(--papel);border:2px solid var(--linea);border-radius:14px}
+.sg-detalle ul{margin:0 0 8px;padding:0;list-style:none}
+.sg-detalle div{display:flex;justify-content:space-between;font-weight:800}
+.sg-mas{margin:16px 0 0;font-size:14px;color:var(--suave)}
+.sg-conexion{margin:10px 0 0;font-size:13.5px;font-weight:700;color:var(--suave)}
+.sg-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin-top:10px}
 
-/* Turnos en el panel */
-.cupo{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding:12px;background:var(--crema);border-radius:14px}
-.cupo small{display:block;font-size:13.5px;font-weight:500;color:var(--suave)}
-.fila-turno{display:grid;grid-template-columns:50px minmax(0,1fr) 36px 72px;align-items:center;gap:8px;min-height:54px;border-bottom:2px solid var(--linea);font-weight:800}
-.fila-turno.cerrado{color:#6B655C}
-.ocup{display:block;height:10px;border-radius:99px;background:#0A0A0C14;overflow:hidden}
-.ocup i{display:block;height:100%;background:var(--naranja)}
-.ocup i.lleno{background:var(--bordo)}
-
-/* Comanda impresa */
-#ticket{display:none}
-@media print{
-  @page{size:80mm auto;margin:3mm}
-  html,body{background:#fff}
-  body>*:not(#ticket){display:none!important}
-  #ticket{display:block;width:74mm;color:#000;font:13px/1.35 ui-monospace,Menlo,Consolas,monospace}
-  .tk{break-after:page}
-  .tk h1,.tk h2{font-family:inherit;font-weight:800}
-  .tk h1{margin:0;font-size:15px}
-  .tk h2{margin:2px 0 6px;font-size:20px}
-  .tk p{margin:0}
-  .tk hr{margin:6px 0;border:0;border-top:1px dashed #000}
+/* Animaciones del seguimiento */
+.e-impresora{position:relative;width:150px;height:140px}
+.e-caja{position:absolute;z-index:2;top:0;left:0;right:0;height:52px;border-radius:10px;background:var(--negro)}
+.e-caja::after{content:"";position:absolute;left:18px;right:18px;bottom:8px;height:5px;border-radius:3px;background:#666}
+.e-papel{position:absolute;z-index:1;top:42px;left:28px;right:28px;height:96px;padding:18px 8px 6px;background:#fff;border:2px solid var(--negro);border-top:0}
+.e-papel i{display:block;height:5px;margin-bottom:7px;border-radius:2px;background:var(--negro)}
+.e-papel i:nth-child(2){width:70%;background:var(--rojo)}
+.e-svg{width:min(100%,270px);height:auto}
+.e-camino{position:absolute;inset:0;overflow:hidden}
+.e-ruta{position:absolute;left:0;right:0;bottom:0;height:54px;background:var(--negro)}
+.e-ruta::after{content:"";position:absolute;left:-60px;right:-60px;top:24px;height:6px;background:repeating-linear-gradient(90deg,var(--crema) 0 30px,transparent 30px 60px)}
+.e-moto{position:absolute;left:50%;bottom:38px;margin-left:-34px;font-size:62px;line-height:1}
+.e-paisaje{position:absolute;bottom:52px;left:0;font-size:32px;line-height:1}
+.e-corazon{font-size:84px;line-height:1}
+.e-triste{font-size:70px;line-height:1}
+@media (prefers-reduced-motion:no-preference){
+  .e-papel{animation:imprimir 2.6s ease-in-out infinite}
+  .e-medallon{transform-box:fill-box;transform-origin:center bottom;animation:smash 1.9s ease-in-out infinite}
+  .e-espatula{animation:prensa 1.9s ease-in-out infinite}
+  .e-humo path{animation:humo 1.9s ease-out infinite}
+  .e-humo path:nth-child(2){animation-delay:.3s}
+  .e-humo path:nth-child(3){animation-delay:.6s}
+  .e-ruta::after{animation:ruta .7s linear infinite}
+  .e-moto{animation:moto .4s ease-in-out infinite alternate}
+  .e-paisaje{animation:paisaje 4.5s linear infinite}
+  .e-paisaje:nth-of-type(2){animation-delay:-1.6s}
+  .e-paisaje:nth-of-type(3){animation-delay:-3.1s}
+  .e-bolsa{transform-box:fill-box;transform-origin:center bottom;animation:bolsa 1.1s ease-in-out infinite}
+  .e-brillo{animation:brillo 1.1s ease-in-out infinite alternate}
+  .e-corazon{animation:latido 1.2s ease-in-out infinite}
+  .sg-escena.cambio{animation:cambio .5s ease-out}
 }
+@keyframes imprimir{0%{transform:translateY(-72%)}72%,100%{transform:translateY(0)}}
+@keyframes smash{0%,38%{transform:scale(1,1)}52%,78%{transform:scale(1.24,.5)}100%{transform:scale(1,1)}}
+@keyframes prensa{0%,38%{transform:translateY(-22px)}52%,78%{transform:translateY(8px)}100%{transform:translateY(-22px)}}
+@keyframes humo{0%{opacity:0;transform:translateY(8px)}40%{opacity:.75}100%{opacity:0;transform:translateY(-16px)}}
+@keyframes ruta{to{transform:translateX(60px)}}
+@keyframes moto{to{transform:translateY(-4px) rotate(-1.5deg)}}
+@keyframes paisaje{from{transform:translateX(-60px)}to{transform:translateX(520px)}}
+@keyframes bolsa{0%,100%{transform:translateY(0) scale(1,1)}45%{transform:translateY(-14px) scale(.98,1.03)}}
+@keyframes brillo{from{opacity:.25}to{opacity:1}}
+@keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+@keyframes cambio{from{transform:scale(.96);opacity:.5}}
 </style>
 </head>
 <body>
 <div class="app" id="inicio">
-  <div class="maqueta">
-    <span>Maqueta: extras y envíos de ejemplo, horario a confirmar</span>
-    <button type="button" id="abrir-panel">Panel de Nico</button>
-  </div>
+  <div class="maqueta">Prueba: extras y envíos de ejemplo, horario a confirmar</div>
 
   <header class="top">
     <a class="marca" href="#inicio">
@@ -273,8 +227,9 @@ textarea{min-height:76px;resize:vertical}
     <span class="estado" id="estado"><i></i><span id="estado-txt">Abierto</span></span>
   </header>
   <div class="aviso" id="aviso" role="status" hidden></div>
+  <a class="banner-pedido" id="banner-pedido" hidden><span id="banner-txt"></span><span aria-hidden="true">→</span></a>
 
-  <main>
+  <main id="tienda">
     <section class="hero">
       <img src="img/hero.jpg" alt="Tres hamburguesas de Coni Smash sostenidas contra una pared de ladrillo">
       <div class="sticker" aria-label="Más de 15.000 hamburguesas"><div><b>+15.000</b>hamburguesas</div></div>
@@ -328,12 +283,14 @@ textarea{min-height:76px;resize:vertical}
       <img src="img/patio.jpg" alt="Patio del local con mesas de madera y techo de paja">
       <p><b>Necochea 315, Álvarez, Santa Fe</b></p>
       <p>Abrimos de miércoles a domingo, de 20:30 a 23:00.</p>
-      <a class="btn btn-negro" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Necochea%20315%20%C3%81lvarez%20Santa%20Fe">Cómo llegar</a>
-      <a class="btn" style="background:var(--papel)" target="_blank" rel="noopener" href="https://www.instagram.com/conismash/">Seguinos en @conismash</a>
+      <a class="btn btn-negro" id="link-mapa" target="_blank" rel="noopener">Cómo llegar</a>
+      <a class="btn btn-papel" target="_blank" rel="noopener" href="https://www.instagram.com/conismash/">Seguinos en @conismash</a>
     </section>
     <div class="cuadros" aria-hidden="true"></div>
-    <footer class="pie">Coni Smash 🧡 Maqueta de NeuraSistemas</footer>
+    <footer class="pie">Coni Smash 🧡 Prueba de NeuraSistemas</footer>
   </main>
+
+  <section class="seguimiento" id="seguimiento" hidden aria-live="polite"></section>
 
   <div class="barra" id="barra" hidden>
     <button class="btn btn-naranja" type="button" id="ver-pedido">
@@ -384,12 +341,12 @@ textarea{min-height:76px;resize:vertical}
       <div id="bloque-delivery" hidden>
         <div class="campo" id="c-zona">
           <label>Zona</label>
-          <div class="seg opciones" id="zonas" role="group" aria-label="Zona de envío"></div>
+          <div class="seg" id="zonas" role="group" aria-label="Zona de envío"></div>
           <p class="error-txt">Elegí tu zona.</p>
         </div>
         <div class="campo" id="c-direccion">
           <label for="direccion">Dirección</label>
-          <input type="text" id="direccion" autocomplete="street-address" placeholder="Calle, número y alguna referencia">
+          <input type="text" id="direccion" autocomplete="street-address" maxlength="120" placeholder="Calle, número y alguna referencia">
           <p class="error-txt">Necesitamos la dirección para llevártela.</p>
         </div>
       </div>
@@ -405,7 +362,7 @@ textarea{min-height:76px;resize:vertical}
 
       <div class="campo" id="c-nombre">
         <label for="nombre">¿A nombre de quién?</label>
-        <input type="text" id="nombre" autocomplete="given-name" placeholder="Tu nombre">
+        <input type="text" id="nombre" autocomplete="given-name" maxlength="50" placeholder="Tu nombre">
         <p class="error-txt">Decinos tu nombre.</p>
       </div>
 
@@ -422,7 +379,7 @@ textarea{min-height:76px;resize:vertical}
         </div>
         <div class="campo" id="bloque-vuelto" hidden>
           <label for="paga-con">¿Con cuánto pagás? <small>(opcional, para el vuelto)</small></label>
-          <input type="tel" inputmode="numeric" id="paga-con" placeholder="Ej: 20000">
+          <input type="tel" inputmode="numeric" id="paga-con" maxlength="9" placeholder="Ej: 20000">
           <p class="aviso-chico" id="vuelto-aviso" hidden>Ese monto no alcanza para el total.</p>
         </div>
       </div>
@@ -439,177 +396,27 @@ textarea{min-height:76px;resize:vertical}
       </div>
     </div>
   </div>
-  <div class="pie-hoja apilado" id="pedido-pie">
-    <a class="btn btn-wa" id="enviar" target="_blank" rel="noopener" href="#">Confirmar y mandar por WhatsApp</a>
-    <p class="nota" id="enviar-nota">Se abre WhatsApp con tu pedido escrito. Solo tocás enviar.</p>
+  <div class="pie-hoja apilado">
+    <button class="btn btn-naranja" type="button" id="confirmar">Confirmar pedido</button>
+    <p class="nota" id="confirmar-nota">Después lo mandás por WhatsApp con un toque y seguís el estado acá.</p>
   </div>
 </dialog>
 
-<!-- Panel de Nico (demostración) -->
-<dialog id="hoja-panel" aria-labelledby="panel-titulo">
-  <header class="hoja-top">
-    <h2 class="hoja-titulo" id="panel-titulo">Panel de Nico</h2>
-    <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">✕</button>
-  </header>
-  <div class="cuerpo">
-    <div class="pad">
-      <p class="panel-nota" style="margin-top:0">Demostración con comandas de ejemplo. Los pedidos que confirmes desde este celular también aparecen acá.</p>
-      <div class="seg tabs" id="panel-tabs" role="group" aria-label="Secciones del panel">
-        <button type="button" data-tab="comandas" aria-pressed="true">Comandas</button>
-        <button type="button" data-tab="turnos" aria-pressed="false">Turnos</button>
-        <button type="button" data-tab="local" aria-pressed="false">Local</button>
-      </div>
-
-      <section id="tab-comandas"></section>
-
-      <section id="tab-turnos" hidden>
-        <div class="cupo">
-          <div><b>Hamburguesas por turno</b><small id="cupo-nota"></small></div>
-          <div class="cant" role="group" aria-label="Cupo por turno">
-            <button type="button" id="cupo-menos" aria-label="Una menos">−</button>
-            <output id="cupo-valor"></output>
-            <button type="button" id="cupo-mas" aria-label="Una más">+</button>
-          </div>
-        </div>
-        <div id="panel-turnos"></div>
-      </section>
-
-      <section id="tab-local" hidden>
-        <div class="grupo">
-          <h3>¿Cómo está el local?</h3>
-          <div class="seg" id="panel-estados" role="group" aria-label="Estado del local" style="grid-auto-flow:row;grid-template-columns:1fr 1fr"></div>
-        </div>
-        <div class="grupo">
-          <h3>Hoy no hay</h3>
-          <p class="ayuda">Marcá lo que se terminó y deja de poder pedirse.</p>
-          <div id="panel-productos"></div>
-        </div>
-      </section>
-    </div>
-  </div>
-</dialog>
-
-<div id="ticket" aria-hidden="true"></div>
-
+<script src="js/comun.js"></script>
 <script>
-/* ==== Datos de ejemplo: los tiene que definir Nico ==== */
-const ZONAS = [
-  { nombre: 'Álvarez', envio: 1500 },
-  { nombre: 'Piñero', envio: 3000 },
-];
-const ALIAS = 'conismash';
-const TITULAR = 'Nicolas Ivan Ortega';
-
-/* Horario a confirmar con Nico: abre "20:30 creo", cierra "22:30 u 23:00".
-   El cupo arranca en 8 por turno: +15.000 hamburguesas en un año dan unas 60 por noche, o 6 cada 15 minutos. */
-const HORARIO = { abre: '20:30', cierra: '23:00', ultimoTurno: '22:45', cadaMin: 15 };
-const CUPO_INICIAL = 8;
-
-/* Queda vacío a propósito para que las pruebas no le lleguen a Nico: WhatsApp pide elegir el contacto.
-   El número real, para cuando salga en serio, es 5493402521435. */
-const WHATSAPP = '';
-
-/* Los extras y sus precios no figuran en la carta. */
-const EXTRAS = [
-  { nombre: 'Cheddar extra', precio: 1000 },
-  { nombre: 'Bacon', precio: 1500 },
-  { nombre: 'Cebolla caramelizada', precio: 1000 },
-  { nombre: 'Aros de cebolla', precio: 1500 },
-  { nombre: 'Pepinillos', precio: 800 },
-];
-const EXTRAS_VEGGIE = EXTRAS.filter((e) => e.nombre !== 'Bacon');
-
-/* ==== Carta real, según las historias destacadas de Instagram ==== */
-const TAMANOS = [
-  { nombre: 'Simple', precio: 17000 },
-  { nombre: 'Doble', precio: 19000 },
-  { nombre: 'Triple', precio: 21000 },
-];
-const burger = (id, nombre, desc, sacar, foto = null, placa = null, extras = EXTRAS) => ({
-  id, cat: 'burgers', nombre, desc, sacar, foto, placa, extras, icono: '🍔', conPapas: true, titulo: 'Tamaño', opciones: TAMANOS,
-});
-const complemento = (id, nombre, desc, titulo, opciones, foto, icono) => ({
-  id, cat: 'acompanar', nombre, desc, titulo, opciones, foto, placa: foto, icono, sacar: [], extras: [],
-});
-const POR_UNIDAD = (a, b, c) => [{ nombre: 'x6', precio: a }, { nombre: 'x10', precio: b }, { nombre: 'x14', precio: c }];
-
-const PRODUCTOS = [
-  /* La burger del mes es de ejemplo: falta saber cuál es la de este mes. */
-  { id: 'mes', cat: 'mes', nombre: 'La del mes', foto: 'img/burger_mes.jpg', placa: 'img/burger_mes.jpg', icono: '🍔', conPapas: true,
-    desc: 'Ejemplo: smash 100 g, cheddar, aros de cebolla, bacon y salsa Coni.',
-    titulo: 'Tamaño', opciones: TAMANOS, sacar: ['Cheddar', 'Aros de cebolla', 'Bacon', 'Salsa Coni'], extras: EXTRAS },
-
-  burger('new_york', 'New York', 'Smash 100 g, cheddar, lechuga, tomate, cebolla caramelizada y salsa Coni.',
-    ['Cheddar', 'Lechuga', 'Tomate', 'Cebolla caramelizada', 'Salsa Coni'], 'img/b_new_york.jpg', 'img/placa_new_york.jpg'),
-  burger('miami', 'Miami', 'Smash 100 g, doble cheddar, doble bacon, cebolla caramelizada y salsa Coni.',
-    ['Cheddar', 'Bacon', 'Cebolla caramelizada', 'Salsa Coni'], 'img/b_miami.jpg', 'img/placa_miami.jpg'),
-  burger('boston', 'Boston', 'Smash 100 g, doble cheddar, doble bacon y salsa barbacoa.',
-    ['Cheddar', 'Bacon', 'Salsa barbacoa'], 'img/b_boston.jpg', 'img/placa_boston.jpg'),
-  burger('chicago', 'Chicago', 'Smash 100 g, provoleta fundida, morrón asado, rúcula y salsa criolla.',
-    ['Provoleta', 'Morrón asado', 'Rúcula', 'Salsa criolla']),
-  burger('san_francisco', 'San Francisco', 'Smash 100 g, queso azul, provoleta, hongos salteados, cebolla caramelizada y salsa alioli.',
-    ['Queso azul', 'Provoleta', 'Hongos salteados', 'Cebolla caramelizada', 'Salsa alioli'], 'img/b_san_francisco.jpg', 'img/placa_san_francisco.jpg'),
-  burger('oklahoma', 'Oklahoma', 'Smash 100 g, cebolla en pluma, doble cheddar, pepinillos, ketchup y mostaza.',
-    ['Cebolla en pluma', 'Cheddar', 'Pepinillos', 'Ketchup', 'Mostaza'], 'img/b_oklahoma.jpg', 'img/placa_oklahoma.jpg'),
-  burger('kansas', 'Kansas', 'Smash 100 g, cheddar, bacon, aros de cebolla y salsa barbacoa.',
-    ['Cheddar', 'Bacon', 'Aros de cebolla', 'Salsa barbacoa'], 'img/b_kansas.jpg', 'img/placa_kansas.jpg'),
-  burger('nashville', 'Nashville', 'Pollo crispy, cheddar, lechuga, pepinillos y alioli.',
-    ['Cheddar', 'Lechuga', 'Pepinillos', 'Alioli'], 'img/b_nashville.jpg', 'img/placa_nashville.jpg'),
-  burger('los_angeles', 'Los Ángeles', 'Smash 100 g, doble cheddar, cebolla picada, ketchup y mostaza.',
-    ['Cheddar', 'Cebolla picada', 'Ketchup', 'Mostaza'], 'img/b_los_angeles.jpg', 'img/placa_los_angeles.jpg'),
-  burger('not_dallas', 'Not Dallas', 'Hamburguesa veggie, lechuga, tomate, cebolla y mayo veggie.',
-    ['Lechuga', 'Tomate', 'Cebolla', 'Mayo veggie'], null, null, EXTRAS_VEGGIE),
-  burger('denver', 'Denver', 'Smash 100 g, mayonesa, provoleta, bacon, lechuga y tomate.',
-    ['Mayonesa', 'Provoleta', 'Bacon', 'Lechuga', 'Tomate']),
-
-  complemento('papas_clasicas', 'Papas clásicas', 'Una porción más de papas.', 'Tamaño',
-    [{ nombre: 'Mediana', precio: 8000 }, { nombre: 'Grande', precio: 10000 }], 'img/papas.jpg', '🍟'),
-  complemento('papas_coni', 'Papas Coni', 'Papas con cheddar, bacon y cebolla caramelizada.', 'Tamaño',
-    [{ nombre: 'Chica', precio: 7000 }, { nombre: 'Mediana', precio: 10000 }, { nombre: 'Grande', precio: 14000 }], null, '🍟'),
-  complemento('onion_rings', 'Onion rings', 'Aros de cebolla + dip.', 'Cantidad', POR_UNIDAD(6000, 10000, 14000), 'img/aros.jpg', '🧅'),
-  complemento('cheese_bites', 'Cheese bites', 'Bocaditos de mozzarella + dip.', 'Cantidad', POR_UNIDAD(8000, 12000, 16000), null, '🧀'),
-  complemento('nuggets', 'Chicken nuggets', 'Nuggets de pollo + dip.', 'Cantidad', POR_UNIDAD(6000, 10000, 14000), null, '🍗'),
-  complemento('dip_cheddar', 'Dip de cheddar', 'Para mojar lo que quieras.', 'Tamaño', [{ nombre: 'Dip', precio: 4000 }], null, '🧀'),
-  complemento('cono_papas', 'Cono de papas', 'Un cono de papas fritas.', 'Tamaño', [{ nombre: 'Cono', precio: 3000 }], null, '🍟'),
-];
-const ESTADOS = {
-  abierto: { nombre: 'Abierto', clase: '', aviso: '', pedir: true },
-  full: { nombre: 'A full', clase: 'full', aviso: '🔥 Estamos a full: hoy demoramos un poco más. Gracias por la paciencia.', pedir: true },
-  cerrado: { nombre: 'Cerrado', clase: 'cerrado', aviso: '😴 Hoy estamos cerrados. Abrimos de miércoles a domingo a las 20:30.', pedir: false },
-  vacaciones: { nombre: 'Vacaciones', clase: 'cerrado', aviso: '😜 Cerramos por vacaciones. ¡Nos vemos a la vuelta!', pedir: false },
-};
-
 /* ==== Estado ==== */
 let carrito = [];
 let borrador = null;
 let lineaEditando = null;
-let estado = 'abierto';
-const agotados = new Set();
-const pedido = { modo: null, zona: null, direccion: '', turno: null, nombre: '', pago: null, pagaCon: '' };
-let cupoPorTurno = CUPO_INICIAL;
-const turnosCerrados = new Set();
-let comandas = [];
-let tabPanel = 'comandas';
+const pedido = { modo: null, zona: null, direccion: '', turno: null, nombre: '', pago: null, pagaCon: '', cod: null, canal: null };
 
-/* ==== Utilidades ==== */
-const $ = (id) => document.getElementById(id);
-const plata = (n) => '$' + Number(n).toLocaleString('es-AR');
-const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const producto = (id) => PRODUCTOS.find((p) => p.id === id);
-const puedePedir = () => ESTADOS[estado].pedir;
+/* Lo que publica el panel. Sin datos recientes, el local se muestra abierto y con todos los turnos libres. */
+const local = { estado: 'abierto', cupo: CUPO_INICIAL, cerrados: [], agotados: [], ocupados: {} };
+const puedePedir = () => (ESTADOS_LOCAL[local.estado] || ESTADOS_LOCAL.abierto).pedir;
 
-function precioUnitario(l) {
-  const p = producto(l.id);
-  const extras = l.extras.reduce((s, n) => s + p.extras.find((e) => e.nombre === n).precio, 0);
-  return p.opciones[l.opcion].precio + extras;
-}
-const precioLinea = (l) => precioUnitario(l) * l.cant;
 const subtotal = () => carrito.reduce((s, l) => s + precioLinea(l), 0);
 const costoEnvio = () => (pedido.modo === 'delivery' && pedido.zona ? ZONAS.find((z) => z.nombre === pedido.zona).envio : 0);
-const nombreLinea = (l) => {
-  const p = producto(l.id);
-  return p.opciones.length > 1 ? `${p.nombre} ${p.opciones[l.opcion].nombre.toLowerCase()}` : p.nombre;
-};
+const agotado = (id) => local.agotados.includes(id);
 
 /* ==== Carta ==== */
 function fotoHtml(p) {
@@ -618,7 +425,7 @@ function fotoHtml(p) {
 function pintarCarta() {
   document.querySelectorAll('.lista').forEach((caja) => {
     caja.innerHTML = PRODUCTOS.filter((p) => p.cat === caja.dataset.cat).map((p) => {
-      const sinStock = agotados.has(p.id);
+      const sinStock = agotado(p.id);
       const desde = p.opciones.length > 1 && p.opciones[0].precio !== p.opciones[1].precio ? 'Desde ' : '';
       return `<button class="prod" type="button" data-prod="${p.id}" ${sinStock ? 'disabled' : ''}>
         ${fotoHtml(p)}
@@ -628,7 +435,7 @@ function pintarCarta() {
     }).join('');
   });
   const m = producto('mes');
-  const sinStock = agotados.has('mes');
+  const sinStock = agotado('mes');
   $('del-mes').innerHTML = `<div class="mes-card">
     <span class="tag">Burger del mes</span>
     <img src="${m.foto}" alt="Hamburguesa del mes con doble medallón y cheddar">
@@ -713,12 +520,17 @@ function agregarBorrador() {
   actualizarTodo();
 }
 
-/* ==== Confirmar el pedido ==== */
-/* Sin emojis: el paso intermedio de WhatsApp los puede mostrar rotos, y en la cocina no hacen falta. */
-const limpio = (s) => s.replace(/\p{Extended_Pictographic}|️|‍/gu, '').trim();
+/* ==== Link de seguimiento y mensaje ==== */
+function datosEnlace() {
+  return {
+    c: pedido.cod, k: pedido.canal, h: pedido.turno, m: pedido.modo === 'delivery' ? 'd' : 'r',
+    r: carrito.map((l) => `${l.cant}x ${nombreLinea(l)}`), tot: subtotal() + costoEnvio(), ts: pedido.ts || Date.now(),
+  };
+}
+const urlSeguimiento = (hash) => `${location.origin}${location.pathname}${location.search}#p=${hash}`;
 
 function armarMensaje() {
-  const r = ['*PEDIDO CONI SMASH*'];
+  const r = [`*PEDIDO CONI SMASH #${pedido.cod}*`];
   if (pedido.turno) r.push(`*PARA LAS ${pedido.turno}*`);
   r.push('');
   carrito.forEach((l) => {
@@ -745,6 +557,7 @@ function armarMensaje() {
   return r.join('\n').trim();
 }
 
+/* ==== Confirmar el pedido ==== */
 function pintarLineas() {
   $('lineas').innerHTML = carrito.map((l, i) => `<div class="linea">
       <div class="linea-top"><span>${esc(nombreLinea(l))}</span><span>${plata(precioLinea(l))}</span></div>
@@ -763,10 +576,41 @@ function pintarLineas() {
       </div>
     </div>`).join('');
 
-  const faltaAcompanar = carrito.length && !carrito.some((l) => producto(l.id).cat === 'acompanar') && !agotados.has('onion_rings');
+  const faltaAcompanar = carrito.length && !carrito.some((l) => producto(l.id).cat === 'acompanar') && !agotado('onion_rings');
   $('sugerencia').innerHTML = faltaAcompanar
     ? `<button class="sugerir" type="button" data-prod="onion_rings"><img src="img/aros.jpg" alt=""><span>¿Le sumás onion rings?<small>Desde ${plata(producto('onion_rings').opciones[0].precio)}</small></span></button>`
     : '';
+}
+
+/* ==== Turnos ==== */
+const libres = (t) => Math.max(local.cupo - (Number(local.ocupados[t]) || 0), 0);
+
+/* Durante el servicio se esconden los turnos que ya pasaron. Fuera de horario se ven todos, para poder probar. */
+function turnosVigentes() {
+  const d = new Date();
+  const ahora = d.getHours() * 60 + d.getMinutes();
+  const enServicio = ahora >= aMin(HORARIO.abre) && ahora < aMin(HORARIO.cierra);
+  return enServicio ? TURNOS.filter((t) => aMin(t) > ahora) : TURNOS;
+}
+function estadoTurno(t) {
+  if (local.cerrados.includes(t)) return { ok: false, txt: 'Cerrado' };
+  const quedan = libres(t);
+  if (quedan === 0) return { ok: false, txt: 'Completo' };
+  if (contarBurgers(carrito) > quedan) return { ok: false, txt: `Quedan ${quedan}` };
+  return { ok: true, txt: quedan <= 3 ? `Quedan ${quedan}` : 'Libre', poco: quedan <= 3 };
+}
+function pintarTurnos() {
+  const lista = turnosVigentes();
+  if (pedido.turno && !(lista.includes(pedido.turno) && estadoTurno(pedido.turno).ok)) pedido.turno = null;
+  $('turnos').innerHTML = lista.map((t) => {
+    const e = estadoTurno(t);
+    return `<button class="turno ${e.poco ? 'poco' : ''}" type="button" data-turno="${t}" aria-pressed="${t === pedido.turno}" ${e.ok ? '' : 'disabled'}>${t}<small>${e.txt}</small></button>`;
+  }).join('');
+  const sinLugar = !lista.some((t) => estadoTurno(t).ok);
+  $('turno-ayuda').hidden = !sinLugar;
+  $('turno-ayuda').textContent = lista.length
+    ? 'Tu pedido es grande para los turnos que quedan: escribinos y lo coordinamos.'
+    : 'Ya no quedan turnos por hoy.';
 }
 
 function pintarOpcionesPedido() {
@@ -780,19 +624,23 @@ function pintarOpcionesPedido() {
 }
 
 function actualizarPedido() {
+  if (!pedido.cod) { pedido.cod = nuevoCodigo(); pedido.canal = nuevoCanal(); }
   pintarTurnos();
   pintarOpcionesPedido();
+  const total = subtotal() + costoEnvio();
   $('t-sub').textContent = plata(subtotal());
   $('t-envio-fila').hidden = pedido.modo !== 'delivery';
   $('t-envio-nombre').textContent = pedido.zona ? `Envío a ${pedido.zona}` : 'Envío';
   $('t-envio').textContent = pedido.zona ? plata(costoEnvio()) : 'Elegí la zona';
-  $('t-total').textContent = plata(subtotal() + costoEnvio());
-  $('vuelto-aviso').hidden = !pedido.pagaCon || Number(pedido.pagaCon) >= subtotal() + costoEnvio();
-  const mensaje = armarMensaje();
-  $('vista-mensaje').innerHTML = esc(mensaje).replace(/\*(.+?)\*/g, '<b>$1</b>');
-  $('enviar').href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
-  $('enviar').setAttribute('aria-disabled', !puedePedir());
-  $('enviar-nota').textContent = puedePedir() ? 'Se abre WhatsApp con tu pedido escrito. Solo tocás enviar.' : ESTADOS[estado].aviso;
+  $('t-total').textContent = plata(total);
+  $('vuelto-aviso').hidden = !pedido.pagaCon || Number(pedido.pagaCon) >= total;
+  $('vista-mensaje').innerHTML = `${esc(armarMensaje()).replace(/\*(.+?)\*/g, '<b>$1</b>')}\n\nSeguí tu pedido: (link de seguimiento)`;
+  const boton = $('confirmar');
+  boton.disabled = !puedePedir();
+  boton.textContent = `Confirmar pedido · ${plata(total)}`;
+  $('confirmar-nota').textContent = puedePedir()
+    ? 'Después lo mandás por WhatsApp con un toque y seguís el estado acá.'
+    : ESTADOS_LOCAL[local.estado].aviso;
 }
 
 function faltantes() {
@@ -817,209 +665,291 @@ function marcarErrores() {
   }
   return f.length === 0;
 }
-function limpiarError(id) { $(id)?.classList.remove('error'); }
+const limpiarError = (id) => $(id)?.classList.remove('error');
 
-function mostrarListo() {
-  $('pedido-cuerpo').firstElementChild.hidden = true;
-  $('pedido-pie').hidden = true;
-  const listo = document.createElement('div');
-  listo.className = 'listo';
-  listo.id = 'listo';
-  listo.innerHTML = `<div>🧡</div><h2>¡Ya casi!</h2>
-    <p>Se abrió WhatsApp con tu pedido escrito. Tocá enviar y le llega a Martu y Nico.</p>
-    <button class="btn btn-naranja" type="button" id="otro-pedido">Hacer otro pedido</button>`;
-  $('pedido-cuerpo').append(listo);
+async function enviarAlPanel(datos) {
+  try {
+    const cifrado = await cifrarPedido(datos);
+    if (cifrado.length > 3900) return false;
+    const r = await Promise.race([
+      publicar(TOPICO_PEDIDOS, cifrado),
+      new Promise((_, no) => setTimeout(() => no(new Error('tiempo')), 7000)),
+    ]);
+    return r.ok;
+  } catch {
+    return false;
+  }
 }
-function reiniciarPedido() {
+
+async function confirmarPedido() {
+  if (!puedePedir() || !marcarErrores()) return;
+  const boton = $('confirmar');
+  boton.disabled = true;
+  boton.textContent = 'Guardando tu pedido…';
+  pedido.ts = Date.now();
+  const hash = crearEnlace(datosEnlace());
+  const mensaje = `${armarMensaje()}\n\nSeguí tu pedido: ${urlSeguimiento(hash)}`;
+  const llego = await enviarAlPanel({
+    cod: pedido.cod, canal: pedido.canal, turno: pedido.turno, nombre: limpio(pedido.nombre), modo: pedido.modo,
+    zona: pedido.zona, direccion: limpio(pedido.direccion), pago: pedido.pago, pagaCon: pedido.pagaCon,
+    total: subtotal() + costoEnvio(), ts: pedido.ts,
+    lineas: carrito.map((l) => ({ id: l.id, opcion: l.opcion, sin: l.sin, extras: l.extras, nota: limpio(l.nota), cant: l.cant })),
+  });
+  guardarLocal('coni_pedido', { cod: pedido.cod, hash, mensaje, ts: pedido.ts, llego, mandado: false });
   carrito = [];
-  Object.assign(pedido, { modo: null, zona: null, direccion: '', turno: null, nombre: '', pago: null, pagaCon: '' });
+  Object.assign(pedido, { modo: null, zona: null, direccion: '', turno: null, nombre: '', pago: null, pagaCon: '', cod: null, canal: null, ts: null });
   ['direccion', 'nombre', 'paga-con'].forEach((id) => { $(id).value = ''; });
-  $('listo')?.remove();
-  $('pedido-cuerpo').firstElementChild.hidden = false;
-  $('pedido-pie').hidden = false;
   $('hoja-pedido').close();
   actualizarTodo();
-}
-
-/* ==== Turnos ==== */
-const aMin = (h) => { const [a, b] = h.split(':').map(Number); return a * 60 + b; };
-const aHora = (m) => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
-const TURNOS = [];
-for (let m = aMin(HORARIO.abre); m <= aMin(HORARIO.ultimoTurno); m += HORARIO.cadaMin) TURNOS.push(aHora(m));
-
-const contarBurgers = (lineas) => lineas.reduce((s, l) => s + (['burgers', 'mes'].includes(producto(l.id).cat) ? l.cant : 0), 0);
-const ocupados = (turno) => comandas.filter((c) => c.turno === turno).reduce((s, c) => s + contarBurgers(c.lineas), 0);
-const libres = (turno) => Math.max(cupoPorTurno - ocupados(turno), 0);
-
-/* Durante el servicio se esconden los turnos que ya pasaron. Fuera de horario se ven todos, para poder probar la maqueta. */
-function turnosVigentes() {
-  const d = new Date();
-  const ahora = d.getHours() * 60 + d.getMinutes();
-  const enServicio = ahora >= aMin(HORARIO.abre) && ahora < aMin(HORARIO.cierra);
-  return enServicio ? TURNOS.filter((t) => aMin(t) > ahora) : TURNOS;
-}
-function estadoTurno(t) {
-  if (turnosCerrados.has(t)) return { ok: false, txt: 'Cerrado' };
-  const quedan = libres(t);
-  if (quedan === 0) return { ok: false, txt: 'Completo' };
-  if (contarBurgers(carrito) > quedan) return { ok: false, txt: `Quedan ${quedan}` };
-  return { ok: true, txt: quedan <= 3 ? `Quedan ${quedan}` : 'Libre', poco: quedan <= 3 };
-}
-function pintarTurnos() {
-  const lista = turnosVigentes();
-  if (pedido.turno && !(lista.includes(pedido.turno) && estadoTurno(pedido.turno).ok)) pedido.turno = null;
-  $('turnos').innerHTML = lista.map((t) => {
-    const e = estadoTurno(t);
-    return `<button class="turno ${e.poco ? 'poco' : ''}" type="button" data-turno="${t}" aria-pressed="${t === pedido.turno}" ${e.ok ? '' : 'disabled'}>${t}<small>${e.txt}</small></button>`;
-  }).join('');
-  const sinLugar = !lista.some((t) => estadoTurno(t).ok);
-  $('turno-ayuda').hidden = !sinLugar;
-  $('turno-ayuda').textContent = lista.length
-    ? 'Tu pedido es grande para los turnos que quedan: escribinos y lo coordinamos.'
-    : 'Ya no quedan turnos por hoy.';
-}
-
-/* ==== Comandas ==== */
-function comandasDeEjemplo() {
-  const carga = { '20:30': 3, '20:45': 6, '21:00': 8, '21:15': 8, '21:30': 6, '21:45': 3, '22:00': 2 };
-  const nombres = ['Sofi', 'Juan', 'Cami', 'Tomi', 'Lu', 'Agus', 'Flor', 'Mati', 'Caro', 'Nacho'];
-  const calles = ['Belgrano 123', 'San Martín 450', 'Rivadavia 78', 'Mitre 912', 'Sarmiento 240'];
-  const burgers = PRODUCTOS.filter((p) => p.cat === 'burgers');
-  const salida = [];
-  let i = 0;
-  Object.entries(carga).forEach(([turno, total]) => {
-    let resto = total;
-    while (resto > 0) {
-      const p = burgers[i % burgers.length];
-      const cant = Math.min(resto, (i % 3) + 1);
-      const linea = { id: p.id, opcion: i % 3, sin: i % 2 ? [p.sacar[i % p.sacar.length]] : [], extras: i % 4 === 0 ? ['Cheddar extra'] : [], nota: '', cant };
-      const modo = i % 3 === 0 ? 'retiro' : 'delivery';
-      const zona = i % 3 === 1 ? 'Piñero' : 'Álvarez';
-      salida.push({
-        n: salida.length + 1, turno, nombre: nombres[i % nombres.length], modo, zona, direccion: calles[i % calles.length],
-        pago: i % 2 ? 'Efectivo' : 'Transferencia', pagaCon: '', lineas: [linea], lista: false,
-        total: precioLinea(linea) + (modo === 'delivery' ? ZONAS.find((z) => z.nombre === zona).envio : 0),
-      });
-      resto -= cant;
-      i++;
-    }
-  });
-  return salida;
-}
-function registrarComanda() {
-  comandas.push({
-    n: comandas.length + 1, turno: pedido.turno, nombre: limpio(pedido.nombre), modo: pedido.modo, zona: pedido.zona,
-    direccion: limpio(pedido.direccion), pago: pedido.pago, pagaCon: pedido.pagaCon, lineas: carrito.map((l) => ({ ...l })),
-    total: subtotal() + costoEnvio(), lista: false, propia: true,
-  });
-}
-const textoEntrega = (c) => (c.modo === 'delivery' ? `Delivery a ${c.zona}, ${c.direccion}` : 'Retira en el local');
-const textoPago = (c) => (c.pago === 'Efectivo' ? 'Efectivo' + (c.pagaCon ? `, con ${plata(c.pagaCon)}` : '') : 'Transferencia');
-
-function comandaHtml(c) {
-  const lineas = c.lineas.map((l) => `<li><b>${l.cant}x ${esc(nombreLinea(l))}</b>
-    ${l.sin.length ? `<span class="sin">Sin ${esc(l.sin.join(', ').toLowerCase())}</span>` : ''}
-    ${l.extras.map((e) => `<span class="con">+ ${esc(e)}</span>`).join('')}
-    ${l.nota ? `<span>${esc(l.nota)}</span>` : ''}</li>`).join('');
-  return `<article class="comanda ${c.lista ? 'lista' : ''}">
-    <header><span>#${c.n} · ${esc(c.nombre)}</span><span>${plata(c.total)}</span></header>
-    ${c.propia ? '<em>Pedido recién hecho</em>' : ''}
-    <p class="comanda-modo">${esc(textoEntrega(c))} · ${esc(textoPago(c))}</p>
-    <ul>${lineas}</ul>
-    <div class="comanda-acc">
-      <button class="link" type="button" data-imprimir="${c.n}">Imprimir</button>
-      <button class="btn-chico" type="button" data-lista="${c.n}" aria-pressed="${c.lista}">${c.lista ? '✓ Lista' : 'Marcar lista'}</button>
-    </div>
-  </article>`;
-}
-function pintarComandas() {
-  const total = comandas.reduce((s, c) => s + contarBurgers(c.lineas), 0);
-  const grupos = TURNOS.filter((t) => comandas.some((c) => c.turno === t)).map((t) => `
-    <div class="turno-titulo">
-      <h3>${t}</h3>
-      <span>${ocupados(t)} de ${cupoPorTurno} hamburguesas</span>
-      <button class="link" type="button" data-imprimir-turno="${t}">Imprimir turno</button>
-    </div>
-    ${comandas.filter((c) => c.turno === t).map(comandaHtml).join('')}`).join('');
-  $('tab-comandas').innerHTML = `<p class="resumen-noche">${comandas.length} comandas · ${total} hamburguesas esta noche</p>${grupos}`;
-}
-function pintarPanelTurnos() {
-  $('cupo-valor').textContent = cupoPorTurno;
-  $('cupo-nota').textContent = `Un turno cada ${HORARIO.cadaMin} minutos: hasta ${cupoPorTurno * TURNOS.length} por noche.`;
-  $('panel-turnos').innerHTML = TURNOS.map((t) => {
-    const cerrado = turnosCerrados.has(t);
-    const n = ocupados(t);
-    const ancho = Math.min(100, Math.round((n / cupoPorTurno) * 100));
-    return `<div class="fila-turno ${cerrado ? 'cerrado' : ''}">
-      <span>${t}</span>
-      <span class="ocup"><i class="${n >= cupoPorTurno ? 'lleno' : ''}" style="width:${ancho}%"></i></span>
-      <span>${n}/${cupoPorTurno}</span>
-      <button class="btn-chico" type="button" data-alternar-turno="${t}" aria-pressed="${cerrado}" aria-label="${cerrado ? 'Abrir' : 'Cerrar'} el turno de las ${t}">${cerrado ? 'Abrir' : 'Cerrar'}</button>
-    </div>`;
-  }).join('');
-}
-function ticketHtml(c) {
-  const lineas = c.lineas.map((l) => [
-    `<p><b>${l.cant}x ${esc(nombreLinea(l))}</b></p>`,
-    l.sin.length ? `<p>  SIN: ${esc(l.sin.join(', '))}</p>` : '',
-    ...l.extras.map((e) => `<p>  + ${esc(e)}</p>`),
-    l.nota ? `<p>  ${esc(l.nota)}</p>` : '',
-  ].join('')).join('');
-  return `<section class="tk">
-    <h1>CONI SMASH #${c.n}</h1>
-    <h2>PARA LAS ${c.turno}</h2>
-    <p>${esc(c.nombre)}</p>
-    <p>${esc(textoEntrega(c))}</p>
-    <hr>${lineas}<hr>
-    <p><b>TOTAL ${plata(c.total)}</b></p>
-    <p>Pago: ${esc(textoPago(c))}</p>
-  </section>`;
-}
-function imprimir(lista) {
-  $('ticket').innerHTML = lista.map(ticketHtml).join('');
-  window.print();
+  location.hash = `p=${hash}`;
 }
 
 /* ==== Estado general ==== */
 function actualizarTodo() {
   const unidades = carrito.reduce((s, l) => s + l.cant, 0);
-  $('barra').hidden = unidades === 0;
+  $('barra').hidden = unidades === 0 || !$('seguimiento').hidden;
   $('barra-cant').textContent = unidades;
   $('barra-total').textContent = plata(subtotal());
   pintarLineas();
   actualizarPedido();
-  if (!carrito.length && $('hoja-pedido').open && !$('listo')) $('hoja-pedido').close();
+  if (!carrito.length && $('hoja-pedido').open) $('hoja-pedido').close();
 }
 function pintarEstado() {
-  const e = ESTADOS[estado];
+  const e = ESTADOS_LOCAL[local.estado] || ESTADOS_LOCAL.abierto;
   $('estado').className = 'estado ' + e.clase;
   $('estado-txt').textContent = e.nombre;
   $('aviso').hidden = !e.aviso;
   $('aviso').textContent = e.aviso;
-  actualizarPedido();
 }
-function pintarPanel() {
-  document.querySelectorAll('[data-tab]').forEach((b) => {
-    b.setAttribute('aria-pressed', b.dataset.tab === tabPanel);
-    $(`tab-${b.dataset.tab}`).hidden = b.dataset.tab !== tabPanel;
-  });
-  pintarComandas();
-  pintarPanelTurnos();
-  $('panel-estados').innerHTML = Object.entries(ESTADOS).map(([k, e]) =>
-    `<button type="button" data-estado="${k}" aria-pressed="${k === estado}">${e.nombre}</button>`).join('');
-  $('panel-productos').innerHTML = PRODUCTOS.map((p) =>
-    `<label class="fila-check"><span>${esc(p.nombre)}</span><input type="checkbox" data-agotado="${p.id}" ${agotados.has(p.id) ? 'checked' : ''}></label>`).join('');
+
+/* Lee lo último que publicó el panel: estado del local, cupo y turnos. */
+async function leerLocalPanel() {
+  try {
+    const r = await fetch(`${NTFY}/${TOPICO_LOCAL}/json?poll=1&since=latest`);
+    const lineas = (await r.text()).trim().split('\n').filter(Boolean);
+    if (!lineas.length) return;
+    const d = JSON.parse(JSON.parse(lineas[lineas.length - 1]).message);
+    if (ESTADOS_LOCAL[d.estado]) local.estado = d.estado;
+    if (Number.isInteger(d.cupo) && d.cupo > 0 && d.cupo <= 30) local.cupo = d.cupo;
+    if (Array.isArray(d.cerrados)) local.cerrados = d.cerrados.filter((t) => TURNOS.includes(t));
+    if (Array.isArray(d.agotados)) local.agotados = d.agotados.filter((id) => producto(id));
+    if (d.ocupados && typeof d.ocupados === 'object') local.ocupados = d.ocupados;
+    pintarCarta();
+    pintarEstado();
+    actualizarPedido();
+    if ($('hoja-prod').open) actualizarProducto();
+    pintarLineas();
+  } catch { /* sin datos del panel la web sigue funcionando */ }
+}
+
+/* ==== Seguimiento ==== */
+const TEXTOS = {
+  nuevo: { titulo: 'Esperando a Coni', texto: 'Apenas lo vean, te lo confirman acá.', escena: 'ticket' },
+  confirmado: { titulo: '¡Lo tenemos!', texto: 'Tu pedido ya está en la lista.', escena: 'ticket' },
+  plancha: { titulo: 'Smasheando tu pedido', texto: 'Ya está en la plancha.', escena: 'plancha' },
+  listo: { titulo: '¡Ya está! Vení a buscarla', texto: `Te esperamos en ${DIRECCION}.`, escena: 'bolsa' },
+  camino: { titulo: 'Tu pedido salió en camino', texto: 'Ya va para tu casa. ¡Preparate!', escena: 'camino' },
+  terminado: { titulo: 'Que la disfrutes', texto: 'Gracias por elegirnos. Coni Smash no sería lo mismo sin ustedes.', escena: 'corazon' },
+  rechazado: { titulo: 'No pudimos tomar tu pedido', texto: 'Escribinos por WhatsApp y lo vemos.', escena: 'triste' },
+  vencido: { titulo: 'Todavía no lo confirmamos', texto: 'Si ya mandaste el WhatsApp, quedate tranquilo: escribinos y lo vemos.', escena: 'triste' },
+};
+
+const ESCENAS = {
+  ticket: `<div class="e-impresora" aria-hidden="true"><div class="e-caja"></div><div class="e-papel"><i></i><i></i><i></i><i></i></div></div>`,
+  plancha: `<svg class="e-svg" viewBox="0 0 260 170" aria-hidden="true">
+      <g class="e-humo" fill="none" stroke="#8A837A" stroke-width="5" stroke-linecap="round">
+        <path d="M92 66c-8-9 8-15 0-27"/><path d="M130 58c-8-9 8-15 0-27"/><path d="M168 66c-8-9 8-15 0-27"/>
+      </g>
+      <g class="e-espatula">
+        <rect x="58" y="62" width="144" height="11" rx="3" fill="#6B655C"/>
+        <rect x="186" y="16" width="12" height="52" rx="5" fill="#0A0A0C" transform="rotate(24 192 42)"/>
+      </g>
+      <g class="e-medallon">
+        <rect x="70" y="84" width="120" height="9" rx="4" fill="#FACF4E"/>
+        <rect x="76" y="92" width="108" height="30" rx="14" fill="#5B2E16"/>
+      </g>
+      <rect x="24" y="122" width="212" height="14" rx="4" fill="#0A0A0C"/>
+      <rect x="36" y="136" width="14" height="18" fill="#0A0A0C"/><rect x="210" y="136" width="14" height="18" fill="#0A0A0C"/>
+    </svg>`,
+  camino: `<div class="e-camino" aria-hidden="true">
+      <span class="e-paisaje">🌵</span><span class="e-paisaje">🏠</span><span class="e-paisaje">🌳</span>
+      <div class="e-ruta"></div><span class="e-moto">🛵</span>
+    </div>`,
+  bolsa: `<svg class="e-svg" viewBox="0 0 220 176" aria-hidden="true">
+      <g class="e-brillo" fill="#FF741F"><path d="M30 44l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/><path d="M190 30l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/><path d="M186 112l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/></g>
+      <g class="e-bolsa">
+        <path d="M66 42l13-20h62l13 20z" fill="#B38E66" stroke="#0A0A0C" stroke-width="3"/>
+        <rect x="66" y="42" width="88" height="118" rx="4" fill="#C9A77C" stroke="#0A0A0C" stroke-width="3"/>
+        <text x="110" y="104" text-anchor="middle" font-family="Caprasimo,Georgia,serif" font-size="30" fill="#C20907">CONI</text>
+        <text x="110" y="124" text-anchor="middle" font-family="Figtree,sans-serif" font-size="11" font-weight="800" fill="#0A0A0C">SMASH HOUSE</text>
+      </g>
+    </svg>`,
+  corazon: '<span class="e-corazon" aria-hidden="true">🧡</span>',
+  triste: '<span class="e-triste" aria-hidden="true">🫣</span>',
+};
+
+const seguimiento = { datos: null, estado: 'nuevo', hora: null, t: 0, fuente: null, conectado: false, cambio: false };
+
+function pasosHtml() {
+  const final = seguimiento.datos.m === 'd' ? 'En camino' : 'Listo';
+  const orden = ['nuevo', 'confirmado', 'plancha', seguimiento.datos.m === 'd' ? 'camino' : 'listo', 'terminado'];
+  let i = orden.indexOf(seguimiento.estado);
+  if (i < 0) i = 0;
+  const nombres = ['Mandado', 'Confirmado', 'En la plancha', final];
+  return `<ol class="sg-pasos">${nombres.map((n, j) => `<li class="${j < i || i === 4 ? 'hecho' : j === i ? 'activo' : ''}">${n}</li>`).join('')}</ol>`;
+}
+
+function pintarSeguimiento() {
+  const d = seguimiento.datos;
+  if (!d) return;
+  const pasado = Date.now() - d.ts > 14 * 3600 * 1000;
+  const estado = pasado && ['nuevo', 'confirmado', 'plancha', 'listo', 'camino'].includes(seguimiento.estado) ? 'terminado' : seguimiento.estado;
+  const txt = TEXTOS[estado] || TEXTOS.nuevo;
+  const hora = seguimiento.hora || d.h;
+  const propio = leerLocal('coni_pedido');
+  const esMio = propio && propio.cod === d.c;
+
+  let titulo = txt.titulo;
+  let texto = txt.texto;
+  let whatsapp = '';
+  if (estado === 'nuevo' && esMio) {
+    const href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(propio.mensaje)}`;
+    if (!propio.mandado) {
+      titulo = 'Último paso';
+      texto = 'Mandanos el pedido por WhatsApp para que lo confirmemos. Solo tocás enviar y volvés acá.';
+      whatsapp = `<a class="btn btn-wa" id="sg-wa" target="_blank" rel="noopener" href="${esc(href)}">Mandar por WhatsApp</a>`;
+    } else {
+      whatsapp = `<a class="btn btn-papel" id="sg-wa" target="_blank" rel="noopener" href="${esc(href)}">Volver a mandarlo por WhatsApp</a>`;
+    }
+  }
+
+  let demora = '';
+  const turnoTs = horaDelTurno(d.ts, hora);
+  const faltan = Math.round((turnoTs - Date.now()) / 60000);
+  if (['confirmado', 'plancha'].includes(estado) && faltan < -10) demora = '<p class="sg-demora">Se está demorando un poco. Gracias por la paciencia 🧡</p>';
+  const cuenta = ['nuevo', 'confirmado', 'plancha'].includes(estado)
+    ? `<p class="sg-hora">Para las ${esc(hora)}${faltan > 0 && faltan < 600 ? ` · faltan ${faltan} min` : ''}</p>` : '';
+  const numero = estado === 'listo' ? `<p class="sg-numero">Decí este número al retirar<b>#${esc(d.c)}</b></p><a class="btn btn-negro" target="_blank" rel="noopener" href="${MAPA}">Cómo llegar</a>` : '';
+  const conexion = seguimiento.conectado ? 'Se actualiza solo mientras tengas esta página abierta.' : '⚠️ Sin conexión: reintentando. El pedido no se pierde.';
+  const final = ['terminado', 'rechazado', 'vencido'].includes(estado);
+
+  const escena = $('seguimiento').querySelector('.sg-escena');
+  const mismaEscena = escena && escena.dataset.escena === txt.escena;
+  const escenaHtml = mismaEscena ? escena.innerHTML : ESCENAS[txt.escena];
+
+  $('seguimiento').innerHTML = `
+    <div class="sg-cab"><span>Tu pedido</span><span class="sg-cod">#${esc(d.c)}</span></div>
+    <div class="sg-escena ${seguimiento.cambio ? 'cambio' : ''}" data-escena="${txt.escena}">${escenaHtml}</div>
+    <h1>${esc(titulo)}</h1>
+    <p class="sg-texto">${esc(texto)}</p>
+    ${cuenta}${demora}${numero}${whatsapp}
+    ${['rechazado', 'vencido'].includes(estado) ? `<a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hola, consulto por mi pedido #${d.c}`)}">Escribirnos por WhatsApp</a>` : ''}
+    ${['rechazado', 'vencido'].includes(estado) ? '' : pasosHtml()}
+    <div class="sg-detalle">
+      <ul>${(Array.isArray(d.r) ? d.r : []).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+      <div><span>Total</span><span>${plata(Number(d.tot) || 0)}</span></div>
+    </div>
+    ${final ? '' : `<p class="sg-conexion">${conexion}</p>`}
+    <p class="sg-mas">Mientras esperás, seguinos y entrá a los sorteos.</p>
+    <div class="sg-links">
+      <a class="link" target="_blank" rel="noopener" href="https://www.instagram.com/conismash/">@conismash</a>
+      <a class="link" href="#carta">Ver la carta</a>
+    </div>`;
+  seguimiento.cambio = false;
+}
+
+function avisarCambio(estado) {
+  seguimiento.cambio = true;
+  navigator.vibrate?.([200, 100, 200]);
+  const titulos = { confirmado: 'Pedido confirmado', plancha: 'En la plancha', listo: '¡Ya podés retirarlo!', camino: '¡Tu pedido salió!', terminado: 'Que la disfrutes' };
+  if (titulos[estado]) document.title = `🍔 ${titulos[estado]}`;
+  try {
+    const audio = new (window.AudioContext || window.webkitAudioContext)();
+    const nota = audio.createOscillator();
+    const volumen = audio.createGain();
+    nota.frequency.value = 740;
+    volumen.gain.value = 0.15;
+    nota.connect(volumen).connect(audio.destination);
+    nota.start();
+    nota.stop(audio.currentTime + 0.25);
+  } catch { /* el navegador puede no permitir sonido sin un toque previo */ }
+}
+
+function recibirEstado(texto) {
+  const salida = JSON.parse(texto);
+  if (salida.event !== 'message') return;
+  const m = JSON.parse(salida.message);
+  if (!TEXTOS[m.e] || (m.t || 0) < seguimiento.t) return;
+  const cambio = m.e !== seguimiento.estado;
+  seguimiento.t = m.t || 0;
+  seguimiento.estado = m.e;
+  if (TURNOS.includes(m.h)) seguimiento.hora = m.h;
+  if (cambio && seguimiento.yaLeido) avisarCambio(m.e);
+  pintarSeguimiento();
+}
+
+function conectarSeguimiento() {
+  seguimiento.fuente?.close();
+  const fuente = new EventSource(`${NTFY}/${topicoPedido(seguimiento.datos.k)}/sse?since=12h`);
+  seguimiento.fuente = fuente;
+  fuente.onopen = () => {
+    seguimiento.conectado = true;
+    pintarSeguimiento();
+    /* Lo que llega apenas conecta es historia: solo avisa con ruido lo que cambia después. */
+    setTimeout(() => { seguimiento.yaLeido = true; }, 1500);
+  };
+  fuente.onerror = () => { seguimiento.conectado = false; pintarSeguimiento(); };
+  fuente.onmessage = (ev) => { try { recibirEstado(ev.data); } catch { /* ignora lo que no entiende */ } };
+}
+
+function pintarBanner() {
+  const propio = leerLocal('coni_pedido');
+  const vigente = propio && Date.now() - propio.ts < 12 * 3600 * 1000;
+  const enTienda = $('seguimiento').hidden;
+  $('banner-pedido').hidden = !(vigente && enTienda);
+  if (vigente) {
+    $('banner-txt').textContent = `Tu pedido #${propio.cod}: ver cómo va`;
+    $('banner-pedido').href = `#p=${propio.hash}`;
+  }
+}
+
+function rutear() {
+  const m = location.hash.match(/^#p=([A-Za-z0-9_-]+)/);
+  const datos = m ? leerEnlace(m[1]) : null;
+  if (datos) {
+    Object.assign(seguimiento, { datos, estado: 'nuevo', hora: null, t: 0, yaLeido: false, conectado: false });
+    $('tienda').hidden = true;
+    $('seguimiento').hidden = false;
+    $('barra').hidden = true;
+    $('seguimiento').innerHTML = '';
+    window.scrollTo(0, 0);
+    pintarSeguimiento();
+    conectarSeguimiento();
+  } else {
+    seguimiento.fuente?.close();
+    seguimiento.datos = null;
+    $('seguimiento').hidden = true;
+    $('tienda').hidden = false;
+    document.title = 'Coni Smash · Prueba';
+    actualizarTodo();
+    leerLocalPanel();
+  }
+  pintarBanner();
 }
 
 /* ==== Eventos ==== */
 document.addEventListener('click', (ev) => {
-  const t = ev.target.closest('button,a');
-
-  /* Tocar afuera cierra la hoja */
   if (ev.target.tagName === 'DIALOG') { ev.target.close(); return; }
+  const t = ev.target.closest('button,a');
   if (!t) return;
   const d = t.dataset;
 
+  if (t.id === 'sg-wa') {
+    const propio = leerLocal('coni_pedido');
+    if (propio) { propio.mandado = true; guardarLocal('coni_pedido', propio); }
+    setTimeout(pintarSeguimiento, 300);
+    return;
+  }
   if ('cerrar' in d) { t.closest('dialog').close(); return; }
   if (d.prod) { abrirProducto(d.prod); return; }
 
@@ -1044,62 +974,19 @@ document.addEventListener('click', (ev) => {
   if (d.modo) { pedido.modo = d.modo; limpiarError('c-modo'); actualizarPedido(); return; }
   if (d.zona) { pedido.zona = d.zona; limpiarError('c-zona'); actualizarPedido(); return; }
   if (d.pago) { pedido.pago = d.pago; limpiarError('c-pago'); actualizarPedido(); return; }
-  if (d.turno) { pedido.turno = d.turno; limpiarError('c-turno'); actualizarPedido(); return; }
-
-  if (d.tab) { tabPanel = d.tab; pintarPanel(); return; }
-  if (d.lista) {
-    const c = comandas.find((x) => x.n === Number(d.lista));
-    c.lista = !c.lista;
-    pintarComandas();
-    return;
-  }
-  if (d.imprimir) { imprimir(comandas.filter((x) => x.n === Number(d.imprimir))); return; }
-  if (d.imprimirTurno) { imprimir(comandas.filter((x) => x.turno === d.imprimirTurno)); return; }
-  if (d.alternarTurno) {
-    if (turnosCerrados.has(d.alternarTurno)) turnosCerrados.delete(d.alternarTurno);
-    else turnosCerrados.add(d.alternarTurno);
-    pintarPanelTurnos();
-    actualizarPedido();
-    return;
-  }
-
-  if (d.estado) { estado = d.estado; pintarEstado(); pintarPanel(); return; }
-
-  if (t.id === 'otro-pedido') reiniciarPedido();
-});
-
-document.addEventListener('change', (ev) => {
-  const id = ev.target.dataset?.agotado;
-  if (!id) return;
-  if (ev.target.checked) agotados.add(id); else agotados.delete(id);
-  pintarCarta();
-  actualizarTodo();
+  if (d.turno) { pedido.turno = d.turno; limpiarError('c-turno'); actualizarPedido(); }
 });
 
 $('prod-menos').addEventListener('click', () => { if (borrador.cant > 1) { borrador.cant--; actualizarProducto(); } });
 $('prod-mas').addEventListener('click', () => { borrador.cant++; actualizarProducto(); });
 $('prod-agregar').addEventListener('click', agregarBorrador);
-$('ver-pedido').addEventListener('click', () => { actualizarTodo(); $('hoja-pedido').showModal(); });
-$('abrir-panel').addEventListener('click', () => { pintarPanel(); $('hoja-panel').showModal(); });
-const cambiarCupo = (delta) => {
-  cupoPorTurno = Math.min(30, Math.max(1, cupoPorTurno + delta));
-  pintarPanelTurnos();
-  pintarComandas();
-  actualizarPedido();
-};
-$('cupo-menos').addEventListener('click', () => cambiarCupo(-1));
-$('cupo-mas').addEventListener('click', () => cambiarCupo(1));
+$('ver-pedido').addEventListener('click', () => { actualizarTodo(); leerLocalPanel(); $('hoja-pedido').showModal(); });
+$('confirmar').addEventListener('click', confirmarPedido);
 
 [['direccion', 'direccion', 'c-direccion'], ['nombre', 'nombre', 'c-nombre']].forEach(([id, campo, c]) => {
   $(id).addEventListener('input', (ev) => { pedido[campo] = ev.target.value.trim(); limpiarError(c); actualizarPedido(); });
 });
 $('paga-con').addEventListener('input', (ev) => { pedido.pagaCon = ev.target.value.replace(/\D/g, ''); actualizarPedido(); });
-
-$('enviar').addEventListener('click', (ev) => {
-  if (!puedePedir() || !marcarErrores()) { ev.preventDefault(); return; }
-  registrarComanda();
-  mostrarListo();
-});
 
 $('copiar-alias').addEventListener('click', async (ev) => {
   const b = ev.currentTarget;
@@ -1108,14 +995,24 @@ $('copiar-alias').addEventListener('click', async (ev) => {
   setTimeout(() => { b.textContent = 'Copiar'; }, 1800);
 });
 
+window.addEventListener('hashchange', rutear);
+/* Al volver de WhatsApp el celular suele cortar la conexión: se reconecta enseguida. */
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible') return;
+  if (seguimiento.datos) { seguimiento.yaLeido = true; conectarSeguimiento(); pintarSeguimiento(); }
+  else leerLocalPanel();
+});
+setInterval(() => { if (seguimiento.datos && document.visibilityState === 'visible') pintarSeguimiento(); }, 30000);
+setInterval(() => { if (!seguimiento.datos && document.visibilityState === 'visible') leerLocalPanel(); }, 60000);
+
 /* ==== Inicio ==== */
 $('alias').textContent = ALIAS;
 $('alias-titular').textContent = 'A nombre de ' + TITULAR;
-comandas = comandasDeEjemplo();
+$('link-mapa').href = MAPA;
 $('zonas').innerHTML = ZONAS.map((z) => `<button type="button" data-zona="${esc(z.nombre)}" aria-pressed="false">${esc(z.nombre)}<small>${plata(z.envio)}</small></button>`).join('');
 pintarCarta();
 pintarEstado();
-actualizarTodo();
+rutear();
 </script>
 </body>
 </html>

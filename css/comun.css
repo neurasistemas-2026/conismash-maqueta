@@ -1,0 +1,61 @@
+:root{
+  color-scheme:light;
+  --naranja:#FF741F; --rojo:#C20907; --negro:#0A0A0C; --verde:#1F603C;
+  --amarillo:#FACF4E; --crema:#F1E8D4; --papel:#FBF6EA; --kraft:#A8865E;
+  --kraft-claro:#DCC8A8; --wa:#25D366; --suave:#55504A; --linea:#0A0A0C26;
+  --azul:#2E3A6B; --bordo:#772426; --placa:#F9EEDD;
+  --display:'Caprasimo','Cooper Black',Georgia,serif;
+  --texto:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --cuadros:conic-gradient(var(--bordo) 25%,var(--crema) 0 50%,var(--bordo) 0 75%,var(--crema) 0);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--negro);font:500 16px/1.45 var(--texto)}
+body:has(dialog[open]){overflow:hidden}
+img{display:block;max-width:100%}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--verde);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;margin:0}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;padding:8px 16px;border:2px solid var(--negro);border-radius:14px;font-weight:800;font-size:17px;text-align:center;text-decoration:none;box-shadow:0 3px 0 var(--negro);transition:transform .08s,box-shadow .08s}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--negro)}
+.btn-naranja{background:var(--naranja);color:var(--negro)}
+.btn-negro{background:var(--negro);color:var(--crema);box-shadow:0 3px 0 #0A0A0C80}
+.btn-wa{background:var(--wa);color:var(--negro)}
+.btn-papel{background:var(--papel);color:var(--negro)}
+.btn:disabled{background:#CFC8BA;color:#403C36;box-shadow:none;cursor:not-allowed}
+
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;padding:4px;margin-top:10px;background:#0A0A0C14;border-radius:14px}
+.seg button{min-height:52px;padding:4px;border-radius:10px;font-weight:700;line-height:1.15}
+.seg button small{display:block;font-size:13px;font-weight:600}
+.seg button[aria-pressed=true]{background:var(--negro);color:var(--crema)}
+
+.cant{display:inline-flex;align-items:center;flex:none;border:2px solid var(--negro);border-radius:12px;background:#fff}
+.cant button{width:42px;height:50px;font-size:22px;font-weight:800}
+.cant output{min-width:26px;text-align:center;font-weight:800}
+
+label{display:block;font-weight:700}
+input[type=text],input[type=tel],input[type=number],textarea,select{display:block;width:100%;min-height:50px;margin-top:6px;padding:12px;border:2px solid var(--negro);border-radius:12px;background:#fff;font-size:16px}
+textarea{min-height:76px;resize:vertical}
+
+dialog{width:100%;max-width:480px;max-height:94dvh;margin:auto auto 0;padding:0;border:0;border-radius:22px 22px 0 0;background:var(--papel);color:var(--negro);overflow:hidden}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:#0A0A0Ca6}
+@media (prefers-reduced-motion:no-preference){dialog[open]{animation:subir .22s ease-out}}
+@keyframes subir{from{transform:translateY(32px);opacity:.4}}
+.hoja-top{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 16px;border-bottom:2px solid var(--negro)}
+.hoja-titulo{font-size:27px;color:var(--rojo)}
+.cerrar{flex:none;width:44px;height:44px;border:2px solid var(--negro);border-radius:50%;background:var(--crema);font-size:20px;font-weight:800}
+.cuerpo{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.pad{padding:16px}
+.sub{margin:6px 0 0;color:var(--suave)}
+.grupo{margin-top:22px}
+.grupo h3{font-size:21px;color:var(--azul)}
+.grupo .ayuda{margin:2px 0 10px;font-size:14px;color:var(--suave)}
+.pie-hoja{flex:none;display:flex;align-items:center;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--papel);border-top:2px solid var(--negro)}
+.pie-hoja.apilado{flex-direction:column;align-items:stretch;gap:6px}
+.pie-hoja .nota{margin:0;font-size:13px;text-align:center;color:var(--suave)}
+.aviso-chico{margin:6px 0 0;font-size:14px;font-weight:700;color:var(--rojo)}
