@@ -1,11 +1,12 @@
 /* Datos y funciones que comparten la web del cliente y el panel de Coni. */
 
 /* ==== Datos de la prueba ==== */
-const WHATSAPP = '5493402521435';
+/* Maqueta académica: sin número, WhatsApp pide elegir a quién mandarlo. */
+const WHATSAPP = '';
 const DIRECCION = 'Necochea 315, Álvarez';
 const MAPA = 'https://www.google.com/maps/search/?api=1&query=Necochea%20315%20%C3%81lvarez%20Santa%20Fe';
-const ALIAS = 'conismash';
-const TITULAR = 'Nicolas Ivan Ortega';
+const ALIAS = 'coni.smash.ejemplo';
+const TITULAR = 'Titular de ejemplo';
 
 /* De ejemplo: los tiene que definir Nico. */
 const ZONAS = [
